@@ -15,8 +15,8 @@ class MainDrawer extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Container(
-                    width: 100,
-                    height: 100,
+                    width: 70,
+                    height: 70,
                     margin: EdgeInsets.only(top: 30, bottom: 10),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,

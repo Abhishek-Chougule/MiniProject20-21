@@ -10,7 +10,6 @@ class SignUpPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
           child: Stack(
             children: [
               Column(

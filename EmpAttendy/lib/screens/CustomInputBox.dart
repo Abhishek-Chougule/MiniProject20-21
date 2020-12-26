@@ -47,7 +47,7 @@ class _MyCustomInputBoxState extends State<MyCustomInputBox> {
             },
             style: TextStyle(
                 fontSize: 12,
-                color: Color(0xff0962ff),
+                color: Color(0xff0C2551),
                 fontWeight: FontWeight.bold),
             decoration: InputDecoration(
               hintText: widget.inputHint,
@@ -57,7 +57,7 @@ class _MyCustomInputBoxState extends State<MyCustomInputBox> {
                   fontWeight: FontWeight.w600),
               contentPadding:
                   EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-              focusColor: Color(0xff0962ff),
+              focusColor: Colors.blue,
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
                 borderSide: BorderSide(color: Color(0xff0962ff)),
@@ -68,23 +68,6 @@ class _MyCustomInputBoxState extends State<MyCustomInputBox> {
                   color: Colors.grey[350],
                 ),
               ),
-              suffixIcon: isSubmitted == true
-                  // will turn the visibility of the 'checkbox' icon
-                  // ON or OFF based on the condition we set before
-                  ? Visibility(
-                      visible: true,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: SvgPicture.asset(
-                          checkBoxIcon,
-                          height: 0,
-                        ),
-                      ),
-                    )
-                  : Visibility(
-                      visible: false,
-                      child: SvgPicture.asset(checkBoxIcon),
-                    ),
             ),
           ),
         ),

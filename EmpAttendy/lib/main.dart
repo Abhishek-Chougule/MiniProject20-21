@@ -45,10 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         color: Theme.of(context).primaryColor,
         items: [
-          Icon(Icons.home),
-          Icon(Icons.person),
-          Icon(Icons.network_wifi),
-          Icon(Icons.settings),
+          Icon(Icons.home_outlined),
+          Icon(Icons.person_outlined),
+          Icon(Icons.speaker_phone),
+          Icon(Icons.settings_outlined),
         ],
         onTap: (index) {
           setState(() {
@@ -75,7 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               disp,
               style: TextStyle(fontSize: 20, color: Colors.black),
-              
             ),
           ],
         ),

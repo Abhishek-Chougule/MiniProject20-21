@@ -55,7 +55,7 @@ class SignUpPage extends StatelessWidget {
                   //
                   MyCustomInputBox(
                     label: 'Name',
-                    inputHint: 'Joy Roy Sharma',
+                    inputHint: 'Amit Raj Sharma',
                   ),
                   //
                   SizedBox(
@@ -72,7 +72,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   //
                   MyCustomInputBox(
-                    label: 'Monile No',
+                    label: 'Mobile No',
                     inputHint: '+91 0000000000',
                   ),
                   //
@@ -113,7 +113,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   //
                   Text(
-                    "Creating an account means you're okay with\nour Terms of Service and Privacy Policy",
+                    "Creating an account means you are agree with\nour Terms of Service and Privacy Policy",
                     style: TextStyle(
                       fontFamily: 'Product Sans',
                       fontSize: 14,
@@ -168,8 +168,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 180, top: 5),
+                    child: Center(
                       child: Text(
                         'Sign up with',
                         style: TextStyle(
@@ -187,8 +186,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   //
                   Container(
-                    margin: EdgeInsets.only(left: 200),
-                    child: Row(
+                    child: Column(
                       children: [
                         Neu_button(
                           char: 'G',

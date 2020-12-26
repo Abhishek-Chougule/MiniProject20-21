@@ -55,7 +55,7 @@ class MainDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.addchart),
+            leading: Icon(Icons.receipt_long_rounded),
             title: Text(
               'Attendy Report',
               style: TextStyle(fontSize: 16),

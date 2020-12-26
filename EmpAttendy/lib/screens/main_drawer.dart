@@ -28,7 +28,7 @@ class MainDrawer extends StatelessWidget {
                   ),
                   Text(
                     'Attendy',
-                    style: TextStyle(fontSize: 22, color: Colors.white),
+                    style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
                     'admin@empattendy.in',

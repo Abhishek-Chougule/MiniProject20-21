@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show BuildContext, MaterialApp, StatelessWidget, ThemeData, Widget, runApp;
 import './screens/main_drawer.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(title: 'Emp Attendy'),
     );
   }

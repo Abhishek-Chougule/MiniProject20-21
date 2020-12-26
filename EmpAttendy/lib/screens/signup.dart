@@ -25,7 +25,7 @@ class SignUpPage extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Cardo',
                           fontSize: 35,
-                          color: Colors.blue,
+                          color: Color(0xff0C2551),
                           fontWeight: FontWeight.w900,
                         ),
                       ),
@@ -49,7 +49,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   //
                   SizedBox(
-                    height: 30,
+                    height: 10,
                   ),
                   //
                   Container(
@@ -71,7 +71,7 @@ class SignUpPage extends StatelessWidget {
                   //
 
                   SizedBox(
-                    height: 30,
+                    height: 5,
                   ),
                   //
                   MyCustomInputBox(
@@ -80,7 +80,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   //
                   SizedBox(
-                    height: 30,
+                    height: 5,
                   ),
                   //
                   MyCustomInputBox(
@@ -89,7 +89,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   //
                   SizedBox(
-                    height: 30,
+                    height: 5,
                   ),
                   //
                   MyCustomInputBox(
@@ -98,14 +98,14 @@ class SignUpPage extends StatelessWidget {
                   ),
                   //
                   SizedBox(
-                    height: 30,
+                    height: 5,
                   ),
                   //
                   Text(
                     "Creating an account means you're okay with\nour Terms of Service and Privacy Policy",
                     style: TextStyle(
                       fontFamily: 'Product Sans',
-                      fontSize: 15.5,
+                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                       color: Color(0xff8f9db5).withOpacity(0.45),
                     ),
@@ -114,9 +114,9 @@ class SignUpPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 20),
                     width: scrWidth * 0.85,
-                    height: 75,
+                    height: 55,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Color(0xff0962ff),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Center(
@@ -124,9 +124,9 @@ class SignUpPage extends StatelessWidget {
                         'Create an Account',
                         style: TextStyle(
                           fontFamily: 'ProductSans',
-                          fontSize: 20,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white70,
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -190,8 +190,8 @@ class Neu_button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 58,
-      height: 58,
+      width: 38,
+      height: 38,
       decoration: BoxDecoration(
         color: Color(0xffffffff),
         borderRadius: BorderRadius.circular(13),
@@ -209,9 +209,9 @@ class Neu_button extends StatelessWidget {
           char,
           style: TextStyle(
             fontFamily: 'ProductSans',
-            fontSize: 29,
+            fontSize: 19,
             fontWeight: FontWeight.bold,
-            color: Colors.blue,
+            color: Color(0xff0962FF),
           ),
         ),
       ),

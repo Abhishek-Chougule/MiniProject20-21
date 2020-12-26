@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './screens/main_drawer.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,9 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      drawer: Drawer(
-        child: Text('Hello'),
-      ),
+      drawer: MainDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

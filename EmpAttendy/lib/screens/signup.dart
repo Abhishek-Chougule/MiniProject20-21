@@ -25,7 +25,7 @@ class SignUpPage extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Cardo',
                           fontSize: 35,
-                          color: Color(0xff0C2551),
+                          color: Colors.blue,
                           fontWeight: FontWeight.w900,
                         ),
                       ),
@@ -116,7 +116,7 @@ class SignUpPage extends StatelessWidget {
                     width: scrWidth * 0.85,
                     height: 75,
                     decoration: BoxDecoration(
-                      color: Color(0xff0962ff),
+                      color: Colors.blue,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Center(
@@ -211,7 +211,7 @@ class Neu_button extends StatelessWidget {
             fontFamily: 'ProductSans',
             fontSize: 29,
             fontWeight: FontWeight.bold,
-            color: Color(0xff0962FF),
+            color: Colors.blue,
           ),
         ),
       ),

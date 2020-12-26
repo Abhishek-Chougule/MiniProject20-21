@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart'
-    show BuildContext, MaterialApp, StatelessWidget, ThemeData, Widget, runApp;
+import 'package:flutter/material.dart';
 import './screens/main_drawer.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 

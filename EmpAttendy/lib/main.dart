@@ -6,6 +6,9 @@ void main() {
   runApp(MyApp());
 }
 
+Color color = Colors.white;
+String disp = '';
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -37,16 +40,6 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       drawer: MainDrawer(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Welcome',
-            ),
-          ],
-        ),
-      ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.white,
         color: Theme.of(context).primaryColor,
@@ -56,6 +49,34 @@ class _MyHomePageState extends State<MyHomePage> {
           Icon(Icons.settings),
           Icon(Icons.person),
         ],
+        onTap: (index) {
+          setState(() {
+            if (index == 0) {
+              color = Colors.white;
+              disp = 'Home';
+            } else if (index == 1) {
+              color = Colors.white;
+              disp = 'My Network';
+            } else if (index == 2) {
+              color = Colors.white;
+              disp = 'Settings';
+            } else if (index == 3) {
+              color = Colors.white;
+              disp = 'Profile';
+            }
+          });
+        },
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              disp,
+              style: TextStyle(fontSize: 20, color: Colors.black),
+            ),
+          ],
+        ),
       ),
     );
   }

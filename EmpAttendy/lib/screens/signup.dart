@@ -116,7 +116,7 @@ class SignUpPage extends StatelessWidget {
                     width: scrWidth * 0.85,
                     height: 55,
                     decoration: BoxDecoration(
-                      color: Color(0xff0962ff),
+                      color: Colors.blue,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Center(
@@ -160,7 +160,7 @@ class SignUpPage extends StatelessWidget {
               ClipPath(
                 clipper: OuterClippedPart(),
                 child: Container(
-                  color: Color(0xff0962ff),
+                  color: Colors.blue,
                   width: scrWidth,
                   height: scrHeight,
                 ),
@@ -169,7 +169,7 @@ class SignUpPage extends StatelessWidget {
               ClipPath(
                 clipper: InnerClippedPart(),
                 child: Container(
-                  color: Color(0xff0c2551),
+                  color: Color(0xff0C2551),
                   width: scrWidth,
                   height: scrHeight,
                 ),
@@ -211,7 +211,7 @@ class Neu_button extends StatelessWidget {
             fontFamily: 'ProductSans',
             fontSize: 19,
             fontWeight: FontWeight.bold,
-            color: Color(0xff0962FF),
+            color: Colors.red,
           ),
         ),
       ),

@@ -46,9 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
         color: Theme.of(context).primaryColor,
         items: [
           Icon(Icons.home),
+          Icon(Icons.person),
           Icon(Icons.network_wifi),
           Icon(Icons.settings),
-          Icon(Icons.person),
         ],
         onTap: (index) {
           setState(() {
@@ -57,13 +57,13 @@ class _MyHomePageState extends State<MyHomePage> {
               disp = 'Home';
             } else if (index == 1) {
               color = Colors.white;
-              disp = 'My Network';
+              disp = 'Profile';
             } else if (index == 2) {
               color = Colors.white;
-              disp = 'Settings';
+              disp = 'My Network';
             } else if (index == 3) {
               color = Colors.white;
-              disp = 'Profile';
+              disp = 'Settings';
             }
           });
         },
@@ -75,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               disp,
               style: TextStyle(fontSize: 20, color: Colors.black),
+              
             ),
           ],
         ),

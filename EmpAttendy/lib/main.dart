@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './screens/main_drawer.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 void main() {
   runApp(MyApp());
@@ -45,6 +46,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.white,
+        color: Theme.of(context).primaryColor,
+        items: [
+          Icon(Icons.home),
+          Icon(Icons.network_wifi),
+          Icon(Icons.settings),
+          Icon(Icons.person),
+        ],
       ),
     );
   }

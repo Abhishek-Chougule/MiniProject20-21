@@ -46,17 +46,17 @@ class _MyCustomInputBoxState extends State<MyCustomInputBox> {
               });
             },
             style: TextStyle(
-                fontSize: 19,
+                fontSize: 12,
                 color: Color(0xff0962ff),
                 fontWeight: FontWeight.bold),
             decoration: InputDecoration(
               hintText: widget.inputHint,
               hintStyle: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Colors.grey[350],
                   fontWeight: FontWeight.w600),
               contentPadding:
-                  EdgeInsets.symmetric(vertical: 27, horizontal: 25),
+                  EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               focusColor: Color(0xff0962ff),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
@@ -77,7 +77,7 @@ class _MyCustomInputBoxState extends State<MyCustomInputBox> {
                         padding: const EdgeInsets.only(right: 8.0),
                         child: SvgPicture.asset(
                           checkBoxIcon,
-                          height: 0.2,
+                          height: 0,
                         ),
                       ),
                     )

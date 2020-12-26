@@ -9,8 +9,8 @@ class SignUpPage extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Center(
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Stack(
             children: [
               Column(
@@ -35,52 +35,63 @@ class SignUpPage extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 40, top: 5),
+                      padding: const EdgeInsets.only(left: 60, top: 5),
                       child: Text(
-                        'Sign up with',
+                        'Admin Log In',
                         style: TextStyle(
                           fontFamily: 'Nunito Sans',
-                          fontSize: 15,
+                          fontSize: 12,
                           color: Colors.grey,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
                   ),
-                  //
-                  SizedBox(
-                    height: 10,
-                  ),
-                  //
-                  Container(
-                    margin: EdgeInsets.only(left: 38),
-                    child: Row(
-                      children: [
-                        Neu_button(
-                          char: 'G',
-                        ),
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Neu_button(
-                          char: 'f',
-                        )
-                      ],
-                    ),
-                  ),
-                  //
 
+                  //
                   SizedBox(
                     height: 5,
                   ),
                   //
                   MyCustomInputBox(
                     label: 'Name',
-                    inputHint: 'Abhi',
+                    inputHint: 'Joy Roy Sharma',
                   ),
                   //
                   SizedBox(
                     height: 5,
+                  ),
+                  //
+                  MyCustomInputBox(
+                    label: 'Date Of Birth',
+                    inputHint: '18/04/1990',
+                  ),
+                  //
+                  SizedBox(
+                    height: 5,
+                  ),
+                  //
+                  MyCustomInputBox(
+                    label: 'Monile No',
+                    inputHint: '+91 0000000000',
+                  ),
+                  //
+                  SizedBox(
+                    height: 5,
+                  ),
+                  //
+                  MyCustomInputBox(
+                    label: 'Designation',
+                    inputHint: 'Manager',
+                  ),
+                  //
+                  SizedBox(
+                    height: 5,
+                  ),
+                  //
+                  MyCustomInputBox(
+                    label: 'Employee ID',
+                    inputHint: 'Emp-90-C1',
                   ),
                   //
                   MyCustomInputBox(
@@ -105,7 +116,7 @@ class SignUpPage extends StatelessWidget {
                     "Creating an account means you're okay with\nour Terms of Service and Privacy Policy",
                     style: TextStyle(
                       fontFamily: 'Product Sans',
-                      fontSize: 12,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                       color: Color(0xff8f9db5).withOpacity(0.45),
                     ),
@@ -152,6 +163,39 @@ class SignUpPage extends StatelessWidget {
                             color: Color(0xff90b7ff),
                           ),
                         )
+                      ],
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 180, top: 5),
+                      child: Text(
+                        'Sign up with',
+                        style: TextStyle(
+                          fontFamily: 'Nunito Sans',
+                          fontSize: 15,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+                  //
+                  SizedBox(
+                    height: 10,
+                  ),
+                  //
+                  Container(
+                    margin: EdgeInsets.only(left: 200),
+                    child: Row(
+                      children: [
+                        Neu_button(
+                          char: 'G',
+                        ),
+                        SizedBox(
+                          width: 25,
+                        ),
                       ],
                     ),
                   ),

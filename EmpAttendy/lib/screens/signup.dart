@@ -182,6 +182,8 @@ class SignUpPage extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
+// ignore: must_be_immutable
 class Neu_button extends StatelessWidget {
   Neu_button({this.char});
   String char;

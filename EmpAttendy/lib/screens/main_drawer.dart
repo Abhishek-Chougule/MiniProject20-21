@@ -1,3 +1,4 @@
+import 'package:EmpAttendy/screens/signup.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -46,7 +47,12 @@ class MainDrawer extends StatelessWidget {
               'Profile',
               style: TextStyle(fontSize: 16),
             ),
-            onTap: null,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignUpPage()),
+              );
+            },
           ),
           ListTile(
             leading: Icon(Icons.addchart),

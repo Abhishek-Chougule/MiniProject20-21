@@ -34,9 +34,10 @@ class SignUpPage extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 60, top: 5),
+                      padding:
+                          const EdgeInsets.only(left: 40, top: 5, bottom: 10),
                       child: Text(
-                        'Admin Log In',
+                        'For Admin Only',
                         style: TextStyle(
                           fontFamily: 'Nunito Sans',
                           fontSize: 12,

@@ -56,6 +56,30 @@ class MainDrawer extends StatelessWidget {
             ),
             onTap: null,
           ),
+          ListTile(
+            leading: Icon(Icons.support_agent),
+            title: Text(
+              'Support',
+              style: TextStyle(fontSize: 16),
+            ),
+            onTap: null,
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text(
+              'Setting',
+              style: TextStyle(fontSize: 16),
+            ),
+            onTap: null,
+          ),
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text(
+              'Logout',
+              style: TextStyle(fontSize: 16),
+            ),
+            onTap: null,
+          ),
         ],
       ),
     );

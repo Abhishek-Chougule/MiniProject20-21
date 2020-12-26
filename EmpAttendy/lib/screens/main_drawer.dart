@@ -49,7 +49,7 @@ class MainDrawer extends StatelessWidget {
             onTap: null,
           ),
           ListTile(
-            leading: Icon(Icons.bug_report),
+            leading: Icon(Icons.addchart),
             title: Text(
               'Attendy Report',
               style: TextStyle(fontSize: 16),

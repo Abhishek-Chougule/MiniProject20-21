@@ -188,7 +188,7 @@ class SignUpPage extends StatelessWidget {
                   Container(
                     child: Column(
                       children: [
-                        Neu_button(
+                        NeuButton(
                           char: 'G',
                         ),
                         SizedBox(
@@ -226,8 +226,8 @@ class SignUpPage extends StatelessWidget {
 
 // ignore: camel_case_types
 // ignore: must_be_immutable
-class Neu_button extends StatelessWidget {
-  Neu_button({this.char});
+class NeuButton extends StatelessWidget {
+  NeuButton({this.char});
   String char;
   @override
   Widget build(BuildContext context) {

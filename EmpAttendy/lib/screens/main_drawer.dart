@@ -16,7 +16,7 @@ class MainDrawer extends StatelessWidget {
                   Container(
                     width: 100,
                     height: 100,
-                    margin: EdgeInsets.only(top: 30),
+                    margin: EdgeInsets.only(top: 30, bottom: 10),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
@@ -39,6 +39,14 @@ class MainDrawer extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text(
+              'Profile',
+              style: TextStyle(fontSize: 16),
+            ),
+            onTap: null,
           ),
         ],
       ),

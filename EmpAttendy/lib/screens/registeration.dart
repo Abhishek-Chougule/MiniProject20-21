@@ -1,5 +1,4 @@
-import 'package:EmpAttendy/main.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show BuildContext, MaterialApp, StatelessWidget, ThemeData, Widget, runApp;
 
 void main() {
   runApp(

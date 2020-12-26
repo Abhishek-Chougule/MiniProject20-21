@@ -16,13 +16,24 @@ class MainDrawer extends StatelessWidget {
                   Container(
                     width: 100,
                     height: 100,
+                    margin: EdgeInsets.only(top: 30),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           image: NetworkImage(
-                            'https://st4.depositphotos.com/4177785/41130/v/1600/depositphotos_411301348-stock-illustration-employee-attendance-concept-icon-simple.jpg',
+                            'https://www.zohowebstatic.com/sites/default/files/attendance-biometric.png',
                           ),
                           fit: BoxFit.fill),
+                    ),
+                  ),
+                  Text(
+                    'Attendy',
+                    style: TextStyle(fontSize: 22, color: Colors.white),
+                  ),
+                  Text(
+                    'admin@empattendy.in',
+                    style: TextStyle(
+                      color: Colors.white,
                     ),
                   ),
                 ],

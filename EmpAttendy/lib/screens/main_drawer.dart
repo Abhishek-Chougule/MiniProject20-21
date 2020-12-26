@@ -48,6 +48,14 @@ class MainDrawer extends StatelessWidget {
             ),
             onTap: null,
           ),
+          ListTile(
+            leading: Icon(Icons.report),
+            title: Text(
+              'Attendy Report',
+              style: TextStyle(fontSize: 16),
+            ),
+            onTap: null,
+          ),
         ],
       ),
     );

@@ -12,6 +12,12 @@ class SignUpPage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Stack(
             children: [
+              imageProfile(),
+              //
+              SizedBox(
+                height: 5,
+              ),
+              //
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -222,6 +228,24 @@ class SignUpPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget imageProfile() {
+  return Stack(children: <Widget>[
+    CircleAvatar(
+      radius: 80.0,
+      backgroundImage: AssetImage("assets/Profile.png"),
+    ),
+    Positioned(
+      bottom: 20.0,
+      right: 20.0,
+      child: Icon(
+        Icons.camera_alt,
+        color: Colors.lightBlue,
+        size: 28.0,
+      ),
+    ),
+  ]);
 }
 
 // ignore: camel_case_types

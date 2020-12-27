@@ -14,7 +14,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
-
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);

@@ -1,4 +1,3 @@
-// ignore: avoid_web_libraries_in_flutter
 import 'package:flutter/material.dart';
 import 'package:EmpAttendy/screens/CustomInputBox.dart';
 

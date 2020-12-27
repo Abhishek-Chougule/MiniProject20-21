@@ -1,4 +1,5 @@
 import 'package:EmpAttendy/screens/signup.dart';
+import 'package:EmpAttendy/screens/wificonnectivity.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -60,7 +61,12 @@ class MainDrawer extends StatelessWidget {
               'Attendy Report',
               style: TextStyle(fontSize: 16),
             ),
-            onTap: null,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => WifiConnectivity()),
+              );
+            },
           ),
           ListTile(
             leading: Icon(Icons.support_agent_rounded),

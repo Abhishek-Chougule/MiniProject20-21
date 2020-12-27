@@ -21,7 +21,7 @@ class _MyCustomInputBoxState extends State<MyCustomInputBox> {
         Align(
           alignment: Alignment.centerLeft,
           child: Padding(
-            padding: const EdgeInsets.only(left: 50.0, bottom: 8),
+            padding: const EdgeInsets.only(left: 50.0, bottom: 8, top: 80.0),
             child: Text(
               widget.label,
               style: TextStyle(

@@ -1,3 +1,4 @@
+import 'dart:js';
 import 'package:flutter/material.dart';
 import 'package:EmpAttendy/screens/CustomInputBox.dart';
 
@@ -47,7 +48,7 @@ class SignUpPage extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Nunito Sans',
                           fontSize: 12,
-                          color: Colors.grey,
+                          color: Colors.red,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -231,21 +232,69 @@ class SignUpPage extends StatelessWidget {
 }
 
 Widget imageProfile() {
-  return Stack(children: <Widget>[
-    CircleAvatar(
-      radius: 80.0,
-      backgroundImage: AssetImage("assets/Profile.png"),
-    ),
-    Positioned(
-      bottom: 20.0,
-      right: 20.0,
-      child: Icon(
-        Icons.camera_alt,
-        color: Colors.lightBlue,
-        size: 28.0,
+  return Center(
+    child: Stack(children: <Widget>[
+      CircleAvatar(
+        radius: 70.0,
+        backgroundImage: AssetImage("assets/Profile.png"),
       ),
+      Positioned(
+        bottom: 20.0,
+        right: 20.0,
+        child: InkWell(
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              builder: ((builder) => bottomsheet()),
+            );
+          },
+          child: Icon(
+            Icons.camera_alt,
+            color: Colors.white,
+            size: 24.0,
+          ),
+        ),
+      ),
+    ]),
+  );
+}
+
+Widget bottomsheet() {
+  return Container(
+    height: 100.0,
+    width: MediaQuery.of(context).size.width,
+    margin: EdgeInsets.symmetric(
+      horizontal: 20,
+      vertical: 20,
     ),
-  ]);
+    child: Column(
+      children: <Widget>[
+        Text(
+          "Choose Profile Photo",
+          style: TextStyle(
+            fontSize: 20.0,
+          ),
+        ),
+        SizedBox(
+          height: 20.0,
+        ),
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          FlatButton.icon(
+            icon: Icon(Icons.camera),
+            onPressed: () {},
+            label: Text("Camera"),
+          ),
+          //
+          FlatButton.icon(
+            icon: Icon(Icons.image),
+            onPressed: () {},
+            label: Text("Gallery"),
+          ),
+          //
+        ])
+      ],
+    ),
+  );
 }
 
 // ignore: camel_case_types

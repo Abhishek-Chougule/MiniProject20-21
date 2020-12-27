@@ -1,3 +1,4 @@
+// ignore: avoid_web_libraries_in_flutter
 import 'package:flutter/material.dart';
 import 'package:EmpAttendy/screens/CustomInputBox.dart';
 
@@ -8,293 +9,222 @@ class SignUpPage extends StatelessWidget {
     var scrHeight = MediaQuery.of(context).size.height;
 
     var safeArea = SafeArea(
-          child: Scaffold(
-            body: SingleChildScrollView(
-              child: Stack(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              //
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  imageProfile(),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 40.0, top: 40),
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          fontFamily: 'Cardo',
+                          fontSize: 35,
+                          color: Color(0xff0C2551),
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      //
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(left: 40, top: 5, bottom: 10),
+                      child: Text(
+                        'For Admin Only',
+                        style: TextStyle(
+                          fontFamily: 'Nunito Sans',
+                          fontSize: 12,
+                          color: Colors.red,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+
                   //
                   SizedBox(
                     height: 5,
                   ),
                   //
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 40.0, top: 40),
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              fontFamily: 'Cardo',
-                              fontSize: 35,
-                              color: Color(0xff0C2551),
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-                          //
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.only(left: 40, top: 5, bottom: 10),
-                          child: Text(
-                            'For Admin Only',
-                            style: TextStyle(
-                              fontFamily: 'Nunito Sans',
-                              fontSize: 12,
-                              color: Colors.red,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      ),
-    
-                      //
-                      SizedBox(
-                        height: 5,
-                      ),
-                      //
-                      MyCustomInputBox(
-                        label: 'Name',
-                        inputHint: 'Amit Raj Sharma',
-                      ),
-                      //
-                      SizedBox(
-                        height: 5,
-                      ),
-                      //
-                      MyCustomInputBox(
-                        label: 'Date Of Birth',
-                        inputHint: '18/04/1990',
-                      ),
-                      //
-                      SizedBox(
-                        height: 5,
-                      ),
-                      //
-                      MyCustomInputBox(
-                        label: 'Mobile No',
-                        inputHint: '+91 0000000000',
-                      ),
-                      //
-                      SizedBox(
-                        height: 5,
-                      ),
-                      //
-                      MyCustomInputBox(
-                        label: 'Designation',
-                        inputHint: 'Manager',
-                      ),
-                      //
-                      SizedBox(
-                        height: 5,
-                      ),
-                      //
-                      MyCustomInputBox(
-                        label: 'Employee ID',
-                        inputHint: 'Emp-90-C1',
-                      ),
-                      //
-                      MyCustomInputBox(
-                        label: 'Email',
-                        inputHint: 'example@example.com',
-                      ),
-                      //
-                      SizedBox(
-                        height: 5,
-                      ),
-                      //
-                      MyCustomInputBox(
-                        label: 'Password',
-                        inputHint: '8+ Characters,1 Capital letter',
-                      ),
-                      //
-                      SizedBox(
-                        height: 5,
-                      ),
-                      //
-                      Text(
-                        "Creating an account means you are agree with\nour Terms of Service and Privacy Policy",
-                        style: TextStyle(
-                          fontFamily: 'Product Sans',
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xff8f9db5).withOpacity(0.45),
-                        ),
-                        //
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 20),
-                        width: scrWidth * 0.85,
-                        height: 55,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Create an Account',
-                            style: TextStyle(
-                              fontFamily: 'ProductSans',
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'Already have an account? ',
-                              style: TextStyle(
-                                fontFamily: 'Product Sans',
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xff8f9db5).withOpacity(0.45),
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'Sign In',
-                              style: TextStyle(
-                                fontFamily: 'Product Sans',
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xff90b7ff),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Center(
-                          child: Text(
-                            'Sign up with',
-                            style: TextStyle(
-                              fontFamily: 'Nunito Sans',
-                              fontSize: 15,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      ),
-                      //
-                      SizedBox(
-                        height: 10,
-                      ),
-                      //
-                      Container(
-                        child: Column(
-                          children: [
-                            NeuButton(
-                              char: 'G',
-                            ),
-                            SizedBox(
-                              width: 25,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  MyCustomInputBox(
+                    label: 'Name',
+                    inputHint: 'Amit Raj Sharma',
                   ),
-                  ClipPath(
-                    clipper: OuterClippedPart(),
-                    child: Container(
+                  //
+                  SizedBox(
+                    height: 5,
+                  ),
+                  //
+                  MyCustomInputBox(
+                    label: 'Date Of Birth',
+                    inputHint: '18/04/1990',
+                  ),
+                  //
+                  SizedBox(
+                    height: 5,
+                  ),
+                  //
+                  MyCustomInputBox(
+                    label: 'Mobile No',
+                    inputHint: '+91 0000000000',
+                  ),
+                  //
+                  SizedBox(
+                    height: 5,
+                  ),
+                  //
+                  MyCustomInputBox(
+                    label: 'Designation',
+                    inputHint: 'Manager',
+                  ),
+                  //
+                  SizedBox(
+                    height: 5,
+                  ),
+                  //
+                  MyCustomInputBox(
+                    label: 'Employee ID',
+                    inputHint: 'Emp-90-C1',
+                  ),
+                  //
+                  MyCustomInputBox(
+                    label: 'Email',
+                    inputHint: 'example@example.com',
+                  ),
+                  //
+                  SizedBox(
+                    height: 5,
+                  ),
+                  //
+                  MyCustomInputBox(
+                    label: 'Password',
+                    inputHint: '8+ Characters,1 Capital letter',
+                  ),
+                  //
+                  SizedBox(
+                    height: 5,
+                  ),
+                  //
+                  Text(
+                    "Creating an account means you are agree with\nour Terms of Service and Privacy Policy",
+                    style: TextStyle(
+                      fontFamily: 'Product Sans',
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xff8f9db5).withOpacity(0.45),
+                    ),
+                    //
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 20),
+                    width: scrWidth * 0.85,
+                    height: 55,
+                    decoration: BoxDecoration(
                       color: Colors.blue,
-                      width: scrWidth,
-                      height: scrHeight,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Create an Account',
+                        style: TextStyle(
+                          fontFamily: 'ProductSans',
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Already have an account? ',
+                          style: TextStyle(
+                            fontFamily: 'Product Sans',
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff8f9db5).withOpacity(0.45),
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Sign In',
+                          style: TextStyle(
+                            fontFamily: 'Product Sans',
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff90b7ff),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Center(
+                      child: Text(
+                        'Sign up with',
+                        style: TextStyle(
+                          fontFamily: 'Nunito Sans',
+                          fontSize: 15,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
                   ),
                   //
-                  ClipPath(
-                    clipper: InnerClippedPart(),
-                    child: Container(
-                      color: Color(0xff0C2551),
-                      width: scrWidth,
-                      height: scrHeight,
+                  SizedBox(
+                    height: 10,
+                  ),
+                  //
+                  Container(
+                    child: Column(
+                      children: [
+                        NeuButton(
+                          char: 'G',
+                        ),
+                        SizedBox(
+                          width: 25,
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
-            ),
+              ClipPath(
+                clipper: OuterClippedPart(),
+                child: Container(
+                  color: Colors.blue,
+                  width: scrWidth,
+                  height: scrHeight,
+                ),
+              ),
+              //
+              ClipPath(
+                clipper: InnerClippedPart(),
+                child: Container(
+                  color: Color(0xff0C2551),
+                  width: scrWidth,
+                  height: scrHeight,
+                ),
+              ),
+            ],
           ),
-        );
-        return safeArea;
+        ),
+      ),
+    );
+    return safeArea;
   }
-}
-
-Widget imageProfile() {
-  return Center(
-    child: Stack(children: <Widget>[
-      CircleAvatar(
-        radius: 70.0,
-        backgroundImage: AssetImage("assets/Profile.png"),
-      ),
-      Positioned(
-        bottom: 20.0,
-        right: 20.0,
-        child: InkWell(
-          onTap: () {
-            showModalBottomSheet(
-              context: null,
-              builder: ((builder) => bottomsheet()),
-            );
-          },
-          child: Icon(
-            Icons.camera_alt,
-            color: Colors.white,
-            size: 24.0,
-          ),
-        ),
-      ),
-    ]),
-  );
-}
-
-Widget bottomsheet() {
-  return Container(
-    height: 100.0,
-    width: 100.0,
-    margin: EdgeInsets.symmetric(
-      horizontal: 20,
-      vertical: 20,
-    ),
-    child: Column(
-      children: <Widget>[
-        Text(
-          "Choose Profile Photo",
-          style: TextStyle(
-            fontSize: 20.0,
-          ),
-        ),
-        SizedBox(
-          height: 20.0,
-        ),
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-          FlatButton.icon(
-            icon: Icon(Icons.camera),
-            onPressed: () {},
-            label: Text("Camera"),
-          ),
-          //
-          FlatButton.icon(
-            icon: Icon(Icons.image),
-            onPressed: () {},
-            label: Text("Gallery"),
-          ),
-          //
-        ])
-      ],
-    ),
-  );
 }
 
 // ignore: camel_case_types

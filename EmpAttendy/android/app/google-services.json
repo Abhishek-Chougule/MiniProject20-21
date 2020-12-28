@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1050831860597",
+    "project_id": "attendancevigilance-59240",
+    "storage_bucket": "attendancevigilance-59240.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050831860597:android:449c469b06fb2c4d2a993c",
+        "android_client_info": {
+          "package_name": "com.miniproject2021.EmpAttendy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050831860597-pf1hhjelartf3pfe2gnl1ulua8qggkun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9mr7mWEfJpTPPW9JwJgu1HaXvdqcwbr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050831860597-pf1hhjelartf3pfe2gnl1ulua8qggkun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

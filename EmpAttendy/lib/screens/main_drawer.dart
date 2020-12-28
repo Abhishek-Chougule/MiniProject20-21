@@ -1,3 +1,4 @@
+import 'package:EmpAttendy/screens/login.dart';
 import 'package:EmpAttendy/screens/signup.dart';
 import 'package:EmpAttendy/screens/wificonnectivity.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,10 @@ import 'package:flutter/material.dart';
 class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String emailid = 'admin@empattendy.in',
+        loginbtn = 'Login',
+        username = 'Attendy';
+
     return Drawer(
       child: Column(
         children: <Widget>[
@@ -29,14 +34,30 @@ class MainDrawer extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Attendy',
+                    username,
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
-                    'admin@empattendy.in',
+                    emailid,
                     style: TextStyle(
                       color: Colors.white,
                     ),
+                  ),
+                  Column(
+                    children: <Widget>[
+                      if (username == 'Attendy' &&
+                          emailid == 'admin@empattendy.in')
+                        FlatButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyLoginPage()),
+                            );
+                          },
+                          child: Text(loginbtn),
+                        ),
+                    ],
                   ),
                 ],
               ),

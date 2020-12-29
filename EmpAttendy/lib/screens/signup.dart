@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:EmpAttendy/screens/custom_input_box.dart';
 import 'package:image_picker/image_picker.dart';
@@ -26,10 +25,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    final _auth = FirebaseAuth.instance;
-    bool showProgress = false;
-    String email, password;
-
     var scrWidth = MediaQuery.of(context).size.width;
     var scrHeight = MediaQuery.of(context).size.height;
 

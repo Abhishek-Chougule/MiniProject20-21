@@ -118,9 +118,9 @@ class _MainDrawerState extends State<MainDrawer> {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          const Text("You are not currently signed in."),
+          Text("You are not currently signed in."),
           RaisedButton(
-            child: const Text('SIGN IN'),
+            child: Text('SIGN IN'),
             onPressed: _handleSignIn,
           ),
         ],
@@ -147,8 +147,7 @@ class _MainDrawerState extends State<MainDrawer> {
                   ),
                   Column(
                     children: <Widget>[
-                      FlatButton(
-                        onPressed: () {},
+                      Container(
                         child: _buildBody(),
                       ),
                     ],

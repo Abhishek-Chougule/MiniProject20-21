@@ -1,7 +1,7 @@
-import 'package:EmpAttendy/screens/login.dart';
 import 'package:EmpAttendy/screens/signup.dart';
 import 'package:EmpAttendy/screens/wificonnectivity.dart';
 import 'package:flutter/material.dart';
+import 'login_page.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -52,7 +52,7 @@ class MainDrawer extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MyLoginPage()),
+                                  builder: (context) => LoginPage()),
                             );
                           },
                           child: Text(loginbtn),

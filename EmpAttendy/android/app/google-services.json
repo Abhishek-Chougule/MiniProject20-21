@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1050831860597-52q7rb22csfrkkl64garkjg6ssd5opnr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.miniproject2021.EmpAttendy",
+            "certificate_hash": "5f5a60e961b3e02f856f8326ee288254c5cb9148"
+          }
+        },
+        {
           "client_id": "1050831860597-pf1hhjelartf3pfe2gnl1ulua8qggkun.apps.googleusercontent.com",
           "client_type": 3
         }

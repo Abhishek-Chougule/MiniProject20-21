@@ -1,3 +1,4 @@
+import 'package:EmpAttendy/screens/mynetwork.dart';
 import 'package:EmpAttendy/screens/signup.dart';
 import 'package:EmpAttendy/screens/wificonnectivity.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +68,12 @@ class _MainDrawerState extends State<MainDrawer> {
               'Support',
               style: TextStyle(fontSize: 16),
             ),
-            onTap: null,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyNetwork()),
+              );
+            },
           ),
           ListTile(
             leading: Icon(Icons.settings),

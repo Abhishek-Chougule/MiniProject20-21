@@ -1,95 +1,72 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:get_mac/get_mac.dart';
+import 'package:imei_plugin/imei_plugin.dart';
 
-void wificonnectivity() {
-  runApp(new WifiConnectivity());
+void main(List<String> args) {
+  runApp(MyApp());
 }
 
-class WifiConnectivity extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Wifi',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: new MyHomePage(title: 'Wifi'),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyNetwork(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
+class MyNetwork extends StatefulWidget {
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyNetworkState createState() => _MyNetworkState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  String _connectionStatus = 'Unknown';
-  final Connectivity _connectivity = new Connectivity();
-  StreamSubscription<ConnectivityResult> _connectivitySubscription;
-  String wifiname;
-  String status = 'No Connected !';
+class _MyNetworkState extends State<MyNetwork> {
+  String _macAddress = "Unknown";
+  String _imeiNumber = "Unknown";
 
   @override
   void initState() {
     super.initState();
-    initConnectivity();
-    _connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
-      setState(() => _connectionStatus = result.toString());
-    });
+    initPlatformState();
   }
 
-  @override
-  void dispose() {
-    _connectivitySubscription.cancel();
-    super.dispose();
-  }
-
-  Future<Null> initConnectivity() async {
-    String connectionStatus;
+  Future<void> initPlatformState() async {
+    String macAddress;
+    String imeiNumber;
 
     try {
-      connectionStatus = (await _connectivity.checkConnectivity()).toString();
-    } on PlatformException catch (e) {
-      print(e.toString());
-      connectionStatus = 'Failed to get connectivity.';
+      macAddress = await GetMac.macAddress;
+      imeiNumber =
+          await ImeiPlugin.getImei(shouldShowRequestPermissionRationale: false);
+    } on PlatformException {
+      macAddress = "Faild to get Device MAC Adress";
     }
-
-    if (!mounted) {
-      return;
-    }
+    if (!mounted) return;
 
     setState(() {
-      _connectionStatus = connectionStatus;
-      wifiname = 'Connection Status: $_connectionStatus';
-      if (wifiname == 'Connection Status: ConnectivityResult.wifi') {
-        status = 'Connected';
-      }
+      _macAddress = macAddress;
+      _imeiNumber = imeiNumber;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: const Text('Check Wifi Status'),
-      ),
-      body: new Center(
-        child: Column(children: <Widget>[
-          Container(
-            width: 280,
-            padding: EdgeInsets.all(10.0),
-            child: Text(status),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Get MAC, IMEI"),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("macAddress" + _macAddress),
+              Text("imeiNumber" + _imeiNumber),
+            ],
           ),
-        ]),
-      ),
-    );
+        ));
   }
 }

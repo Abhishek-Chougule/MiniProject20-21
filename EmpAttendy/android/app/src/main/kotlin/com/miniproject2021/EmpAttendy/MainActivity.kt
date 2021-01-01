@@ -1,4 +1,4 @@
-package com.miniproject2021.EmpAttendy
+package com.miniproject2021.EmpAttendance
 
 import io.flutter.embedding.android.FlutterActivity
 

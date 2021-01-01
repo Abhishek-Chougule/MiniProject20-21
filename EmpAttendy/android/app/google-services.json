@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1050831860597:android:449c469b06fb2c4d2a993c",
         "android_client_info": {
-          "package_name": "com.miniproject2021.EmpAttendy"
+          "package_name": "com.miniproject2021.EmpAttendance"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "1050831860597-52q7rb22csfrkkl64garkjg6ssd5opnr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.miniproject2021.EmpAttendy",
+            "package_name": "com.miniproject2021.EmpAttendance",
             "certificate_hash": "5f5a60e961b3e02f856f8326ee288254c5cb9148"
           }
         },

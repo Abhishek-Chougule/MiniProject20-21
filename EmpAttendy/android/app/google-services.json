@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "1050831860597",
-    "project_id": "attendancevigilance-59240",
-    "storage_bucket": "attendancevigilance-59240.appspot.com"
+    "project_number": "312222550367",
+    "project_id": "emp-attendance-9a6e7",
+    "storage_bucket": "emp-attendance-9a6e7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1050831860597:android:449c469b06fb2c4d2a993c",
+        "mobilesdk_app_id": "1:312222550367:android:0c4801d70d4e9109134eea",
         "android_client_info": {
           "package_name": "com.miniproject2021.EmpAttendance"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1050831860597-52q7rb22csfrkkl64garkjg6ssd5opnr.apps.googleusercontent.com",
+          "client_id": "312222550367-mqriu8u23j9790qd7i39kq53vrd0hn1s.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.miniproject2021.EmpAttendance",
@@ -22,20 +22,20 @@
           }
         },
         {
-          "client_id": "1050831860597-pf1hhjelartf3pfe2gnl1ulua8qggkun.apps.googleusercontent.com",
+          "client_id": "312222550367-eob2cgkkk3qjbj3kapj9h2vo5jlea4gc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD9mr7mWEfJpTPPW9JwJgu1HaXvdqcwbr0"
+          "current_key": "AIzaSyCMwPb8KkbLWoijHpvLXzz2FQRMol1nBKU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1050831860597-pf1hhjelartf3pfe2gnl1ulua8qggkun.apps.googleusercontent.com",
+              "client_id": "312222550367-eob2cgkkk3qjbj3kapj9h2vo5jlea4gc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

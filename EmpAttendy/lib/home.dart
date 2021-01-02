@@ -99,7 +99,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                     .once(),
                 builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
                   if (snapshot.hasData) {
-                    return Text(snapshot.data.value['email']);
+                    return Text(
+                        'Email            :   ' + snapshot.data.value['email']);
                   } else {
                     return CircularProgressIndicator();
                   }
@@ -112,7 +113,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                     .once(),
                 builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
                   if (snapshot.hasData) {
-                    return Text(snapshot.data.value['name']);
+                    return Text(
+                        'Username    :   ' + snapshot.data.value['name']);
                   } else {
                     return CircularProgressIndicator();
                   }
@@ -124,7 +126,14 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
           ListTile(
             leading: new IconButton(
               icon: new Icon(Icons.home_outlined),
-              onPressed: () => null,
+              onPressed: () {
+                print(widget.uid);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Home(uid: widget.uid)),
+                );
+              },
             ),
             title: Text('Home'),
             onTap: () {
@@ -138,7 +147,12 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
           ListTile(
             leading: new IconButton(
               icon: new Icon(Icons.network_check),
-              onPressed: () => null,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WifiConnectivity()),
+                );
+              },
             ),
             title: Text('Connectivity'),
             onTap: () {
@@ -151,7 +165,12 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
           ListTile(
             leading: new IconButton(
               icon: new Icon(Icons.network_cell),
-              onPressed: () => null,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyNetwork()),
+                );
+              },
             ),
             title: Text('Network'),
             onTap: () {

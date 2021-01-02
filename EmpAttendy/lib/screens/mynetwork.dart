@@ -63,8 +63,9 @@ class _MyNetworkState extends State<MyNetwork> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("macAddress" + _macAddress),
-              Text("imeiNumber" + _imeiNumber),
+              Text("MAC Address :  " + _macAddress),
+              Text(''),
+              Text("IMEI Number :  " + _imeiNumber),
             ],
           ),
         ));

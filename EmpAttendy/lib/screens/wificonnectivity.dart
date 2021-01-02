@@ -1,35 +1,29 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 
-void wificonnectivity() {
-  runApp(new WifiConnectivity());
+void main(List<String> args) {
+  runApp(MyApp());
 }
 
-class WifiConnectivity extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Wifi',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: new MyHomePage(title: 'Wifi'),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: WifiConnectivity(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
+class WifiConnectivity extends StatefulWidget {
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _WifiConnectivityState createState() => _WifiConnectivityState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _WifiConnectivityState extends State<WifiConnectivity> {
   String _connectionStatus = 'Unknown';
   final Connectivity _connectivity = new Connectivity();
   StreamSubscription<ConnectivityResult> _connectivitySubscription;
@@ -77,19 +71,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: const Text('Check Wifi Status'),
-      ),
-      body: new Center(
-        child: Column(children: <Widget>[
-          Container(
-            width: 280,
-            padding: EdgeInsets.all(10.0),
-            child: Text(status),
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Wifi Connectivity"),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(status),
+            ],
           ),
-        ]),
-      ),
-    );
+        ));
   }
 }

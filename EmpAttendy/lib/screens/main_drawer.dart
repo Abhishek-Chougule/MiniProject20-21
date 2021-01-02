@@ -39,7 +39,7 @@ class _MainDrawerState extends State<MainDrawer> {
           ListTile(
             leading: Icon(Icons.person),
             title: Text(
-              'Profile',
+              'Signup',
               style: TextStyle(fontSize: 16),
             ),
             onTap: () {
@@ -52,7 +52,7 @@ class _MainDrawerState extends State<MainDrawer> {
           ListTile(
             leading: Icon(Icons.receipt_long_rounded),
             title: Text(
-              'Attendy Report',
+              'Connectivity',
               style: TextStyle(fontSize: 16),
             ),
             onTap: () {
@@ -65,7 +65,7 @@ class _MainDrawerState extends State<MainDrawer> {
           ListTile(
             leading: Icon(Icons.support_agent_rounded),
             title: Text(
-              'Support',
+              'Network',
               style: TextStyle(fontSize: 16),
             ),
             onTap: () {

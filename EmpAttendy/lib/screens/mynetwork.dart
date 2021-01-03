@@ -105,9 +105,10 @@ class _MyNetworkState extends State<MyNetwork> {
             children: <Widget>[
               Text((() {
                 if (status == 'Connected') {
-                  return _macAddress + _imeiNumber;
+                  return '''MAC Adress :  $_macAddress 
+                            IMEI Number :   $_imeiNumber''';
                 } else {
-                  return status;
+                  return 'No Active Users !';
                 }
               })()),
             ],

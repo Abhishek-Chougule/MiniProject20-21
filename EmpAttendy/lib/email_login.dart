@@ -30,7 +30,7 @@ class _EmailLogInState extends State<EmailLogIn> {
                   decoration: InputDecoration(
                     labelText: "Enter Email Address",
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
                   ),
                   // The validator receives the text that the user has entered.
@@ -52,7 +52,7 @@ class _EmailLogInState extends State<EmailLogIn> {
                   decoration: InputDecoration(
                     labelText: "Enter Password",
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
                   ),
                   // The validator receives the text that the user has entered.
@@ -80,7 +80,7 @@ class _EmailLogInState extends State<EmailLogIn> {
                             logInToFb();
                           }
                         },
-                        child: Text('Submit'),
+                        child: Text('Login'),
                       ),
               )
             ]))));

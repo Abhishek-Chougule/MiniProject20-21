@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'home.dart';
 
@@ -21,6 +24,20 @@ class _EmailSignUpState extends State<EmailSignUp> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController ageController = TextEditingController();
+
+  File _image;
+  final picker = ImagePicker();
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +81,25 @@ class _EmailSignUpState extends State<EmailSignUp> {
                     ),
                   ),
                 ),
+                ClipOval(
+                  child: _image == null
+                      ? Text('No image selected.')
+                      : Image.file(
+                          _image,
+                          height: 100,
+                          width: 100,
+                          fit: BoxFit.cover,
+                        ),
+                ),
+                FloatingActionButton(
+                  onPressed: getImage,
+                  tooltip: 'Pick Image',
+                  child: Icon(Icons.add_a_photo),
+                ),
+                //
+                SizedBox(
+                  height: 5,
+                ),
                 Padding(
                   padding: EdgeInsets.all(20.0),
                   child: TextFormField(
@@ -71,7 +107,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
                     decoration: InputDecoration(
                       labelText: "Enter User Name",
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
                     ),
                     // The validator receives the text that the user has entered.
@@ -90,7 +126,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
                     decoration: InputDecoration(
                       labelText: "Enter Email",
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
                     ),
                     // The validator receives the text that the user has entered.
@@ -112,7 +148,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
                     decoration: InputDecoration(
                       labelText: "Enter Mobile Number",
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
                     ),
                     // The validator receives the text that the user has entered.
@@ -133,7 +169,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
                     decoration: InputDecoration(
                       labelText: "Enter Gender",
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
                     ),
                     // The validator receives the text that the user has entered.
@@ -160,7 +196,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
                     decoration: InputDecoration(
                       labelText: "Enter Age",
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
                     ),
                     // The validator receives the text that the user has entered.
@@ -180,7 +216,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
                     decoration: InputDecoration(
                       labelText: "Enter Password",
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
                     ),
                     // The validator receives the text that the user has entered.
@@ -193,6 +229,16 @@ class _EmailSignUpState extends State<EmailSignUp> {
                       return null;
                     },
                   ),
+                ),
+                Text(
+                  "Creating an account means you are agree with\nour Terms of Service and Privacy Policy",
+                  style: TextStyle(
+                    fontFamily: 'Product Sans',
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff8f9db5).withOpacity(0.45),
+                  ),
+                  //
                 ),
                 Padding(
                   padding: EdgeInsets.all(20.0),
@@ -208,7 +254,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
                               registerToFb();
                             }
                           },
-                          child: Text('Submit'),
+                          child: Text('Sign Up'),
                         ),
                 ),
               ]),
@@ -217,7 +263,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
                 child: Container(
                   color: Colors.blue,
                   width: scrWidth,
-                  height: scrHeight,
+                  height: scrHeight - 180,
                 ),
               ),
               //
@@ -226,7 +272,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
                 child: Container(
                   color: Color(0xff0C2551),
                   width: scrWidth,
-                  height: scrHeight,
+                  height: scrHeight - 180,
                 ),
               ),
             ]))));

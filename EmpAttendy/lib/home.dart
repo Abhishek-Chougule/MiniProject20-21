@@ -91,6 +91,22 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
+            currentAccountPicture: FutureBuilder(
+                future: FirebaseDatabase.instance
+                    .reference()
+                    .child("Users")
+                    .child(widget.uid)
+                    .once(),
+                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+                  if (snapshot.hasData) {
+                    return CircleAvatar(
+                      backgroundColor: Colors.brown.shade800,
+                      child: Text(snapshot.data.value['name'][0]),
+                    );
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                }),
             accountEmail: FutureBuilder(
                 future: FirebaseDatabase.instance
                     .reference()

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:EmpAttendy/home.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -21,6 +22,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyNetwork extends StatefulWidget {
+  MyNetwork({this.uid});
+  final String uid;
   @override
   _MyNetworkState createState() => _MyNetworkState();
 }
@@ -97,7 +100,7 @@ class _MyNetworkState extends State<MyNetwork> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Get MAC, IMEI"),
+          title: Text("My Network"),
         ),
         body: Center(
           child: Column(
@@ -114,6 +117,7 @@ class _MyNetworkState extends State<MyNetwork> {
               })()),
             ],
           ),
-        ));
+        ),
+        drawer: NavigateDrawer(uid: this.widget.uid));
   }
 }

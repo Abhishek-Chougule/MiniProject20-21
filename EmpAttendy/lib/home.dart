@@ -1,11 +1,12 @@
 import 'package:EmpAttendy/screens/mynetwork.dart';
+import 'package:EmpAttendy/firebase_auth/signup.dart';
+import 'package:EmpAttendy/screens/settings.dart';
+import 'package:EmpAttendy/screens/about.dart';
 import 'package:EmpAttendy/screens/wificonnectivity.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-
-import 'signup.dart';
 
 class Home extends StatefulWidget {
   Home({this.uid});
@@ -17,9 +18,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final String title = "Home";
-
-  Color color = Colors.white;
-  String disp = 'Welcome';
 
   @override
   Widget build(BuildContext context) {
@@ -44,34 +42,7 @@ class _HomeState extends State<Home> {
             )
           ],
         ),
-        body: Center(child: Text(disp)),
-        bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Colors.white,
-          color: Theme.of(context).primaryColor,
-          items: [
-            Icon(Icons.home_outlined),
-            Icon(Icons.person_outlined),
-            Icon(Icons.speaker_phone),
-            Icon(Icons.settings_outlined),
-          ],
-          onTap: (index) {
-            setState(() {
-              if (index == 0) {
-                color = Colors.white;
-                disp = 'Home';
-              } else if (index == 1) {
-                color = Colors.white;
-                disp = 'Profile';
-              } else if (index == 2) {
-                color = Colors.white;
-                disp = 'My Network';
-              } else if (index == 3) {
-                color = Colors.white;
-                disp = 'Settings';
-              }
-            });
-          },
-        ),
+        body: Center(),
         drawer: NavigateDrawer(uid: this.widget.uid));
   }
 }
@@ -166,7 +137,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WifiConnectivity()),
+                  MaterialPageRoute(
+                      builder: (context) => WifiConnectivity(uid: widget.uid)),
                 );
               },
             ),
@@ -174,7 +146,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => WifiConnectivity()),
+                MaterialPageRoute(
+                    builder: (context) => WifiConnectivity(uid: widget.uid)),
               );
             },
           ),
@@ -184,7 +157,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyNetwork()),
+                  MaterialPageRoute(
+                      builder: (context) => MyNetwork(uid: widget.uid)),
                 );
               },
             ),
@@ -192,28 +166,48 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MyNetwork()),
+                MaterialPageRoute(
+                    builder: (context) => MyNetwork(uid: widget.uid)),
               );
             },
           ),
           ListTile(
             leading: new IconButton(
               icon: new Icon(Icons.settings_outlined),
-              onPressed: () => null,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Settings(uid: widget.uid)),
+                );
+              },
             ),
             title: Text('Settings'),
             onTap: () {
-              print(widget.uid);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Settings(uid: widget.uid)),
+              );
             },
           ),
           ListTile(
             leading: new IconButton(
               icon: new Icon(Icons.add_box_outlined),
-              onPressed: () => null,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => About(uid: widget.uid)),
+                );
+              },
             ),
             title: Text('About'),
             onTap: () {
-              print(widget.uid);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => About(uid: widget.uid)),
+              );
             },
           ),
         ],

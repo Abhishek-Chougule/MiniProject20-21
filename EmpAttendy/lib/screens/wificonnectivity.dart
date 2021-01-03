@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:EmpAttendy/home.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -19,6 +20,8 @@ class MyApp extends StatelessWidget {
 }
 
 class WifiConnectivity extends StatefulWidget {
+  WifiConnectivity({this.uid});
+  final String uid;
   @override
   _WifiConnectivityState createState() => _WifiConnectivityState();
 }
@@ -82,6 +85,7 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
               Text(status),
             ],
           ),
-        ));
+        ),
+        drawer: NavigateDrawer(uid: this.widget.uid));
   }
 }

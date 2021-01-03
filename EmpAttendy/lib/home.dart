@@ -70,7 +70,7 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                 builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
                   if (snapshot.hasData) {
                     return CircleAvatar(
-                      backgroundColor: Colors.brown.shade800,
+                      backgroundColor: Colors.black,
                       child: Text(snapshot.data.value['name'][0]),
                     );
                   } else {

@@ -16,6 +16,8 @@ class _EmailSignUpState extends State<EmailSignUp> {
   DatabaseReference dbRef =
       FirebaseDatabase.instance.reference().child("Users");
   TextEditingController emailController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
+  TextEditingController mnoController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController ageController = TextEditingController();
@@ -71,7 +73,56 @@ class _EmailSignUpState extends State<EmailSignUp> {
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: TextFormField(
+                  controller: mnoController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: "Enter Mobile Number",
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  // The validator receives the text that the user has entered.
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Enter Mobile Number';
+                    } else if (value.length != 10) {
+                      return 'Please enter 10 digit Mobile Number';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(20.0),
+                child: TextFormField(
+                  controller: genderController,
+                  decoration: InputDecoration(
+                    labelText: "Enter Gender",
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  // The validator receives the text that the user has entered.
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Enter Gender';
+                    } else if (!value.contains('male') &&
+                        !value.contains('Male') &&
+                        !value.contains('MALE') &&
+                        !value.contains('female') &&
+                        !value.contains('Female') &&
+                        !value.contains('FEMALE')) {
+                      return 'Please enter a valid Gender';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(20.0),
+                child: TextFormField(
                   controller: ageController,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: "Enter Age",
                     enabledBorder: OutlineInputBorder(
@@ -136,6 +187,8 @@ class _EmailSignUpState extends State<EmailSignUp> {
         .then((result) {
       dbRef.child(result.user.uid).set({
         "email": emailController.text,
+        "mno": mnoController.text,
+        "gender": genderController.text,
         "age": ageController.text,
         "name": nameController.text
       }).then((res) {
@@ -170,6 +223,8 @@ class _EmailSignUpState extends State<EmailSignUp> {
     super.dispose();
     nameController.dispose();
     emailController.dispose();
+    mnoController.dispose();
+    genderController.dispose();
     passwordController.dispose();
     ageController.dispose();
   }

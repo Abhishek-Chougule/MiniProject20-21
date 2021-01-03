@@ -3,7 +3,6 @@ import 'package:EmpAttendy/firebase_auth/signup.dart';
 import 'package:EmpAttendy/screens/settings.dart';
 import 'package:EmpAttendy/screens/about.dart';
 import 'package:EmpAttendy/screens/wificonnectivity.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';

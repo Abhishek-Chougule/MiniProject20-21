@@ -41,7 +41,7 @@ class IntroScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         styleTextUnderTheLoader: new TextStyle(),
         photoSize: 100.0,
-        onClick: () => print("flutter"),
-        loaderColor: Colors.red);
+        onClick: () => print("EmpAttendy"),
+        loaderColor: Colors.blue);
   }
 }

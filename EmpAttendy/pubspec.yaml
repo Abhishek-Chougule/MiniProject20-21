@@ -30,7 +30,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   flutter_svg: ^0.18.0
-  curved_navigation_bar: ^0.3.7
   connectivity: ^2.0.2
   image_picker: ^0.6.6+5
   imei_plugin: ^1.2.0
@@ -44,7 +43,6 @@ dependencies:
   firebase_database: ^4.4.0
   flutter_signin_button: ^1.1.0
   splashscreen: ^1.3.5
-  flutter_chat: ^1.1.0
   
 
 dev_dependencies:

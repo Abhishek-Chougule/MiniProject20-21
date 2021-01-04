@@ -6,8 +6,6 @@ import 'package:EmpAttendy/screens/wificonnectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat/chatData.dart';
-import 'package:flutter_chat/chatWidget.dart';
 
 class Home extends StatefulWidget {
   Home({this.uid});
@@ -19,12 +17,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final String title = "Home";
-  @override
-  void initState() {
-    super.initState();
-    ChatData.init("Just Chat", context);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,9 +40,7 @@ class _HomeState extends State<Home> {
             )
           ],
         ),
-        body: Center(
-          child: ChatWidget.widgetWelcomeScreen(context),
-        ),
+        body: Center(),
         drawer: NavigateDrawer(uid: this.widget.uid));
   }
 }

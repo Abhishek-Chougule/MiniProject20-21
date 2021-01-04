@@ -33,13 +33,13 @@ class IntroScreen extends StatelessWidget {
         navigateAfterSeconds: result != null ? Home(uid: result.uid) : SignUp(),
         seconds: 4,
         title: new Text(
-          'Welcome To EmpAttendy',
+          '\nWelcome To EmpAttendy',
           style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
         ),
         image: Image.asset('assets/sslogo.png', fit: BoxFit.scaleDown),
         backgroundColor: Colors.white,
         styleTextUnderTheLoader: new TextStyle(),
-        photoSize: 100.0,
+        photoSize: 50.0,
         onClick: () => print("EmpAttendy"),
         loaderColor: Colors.blue);
   }

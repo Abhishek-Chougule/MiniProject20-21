@@ -19,6 +19,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final String title = "Home";
+  @override
+  void initState() {
+    super.initState();
+    ChatData.init("Just Chat", context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +63,6 @@ class NavigateDrawer extends StatefulWidget {
 }
 
 class _NavigateDrawerState extends State<NavigateDrawer> {
-  @override
-  void initState() {
-    super.initState();
-    ChatData.init("Just Chat", context);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Drawer(

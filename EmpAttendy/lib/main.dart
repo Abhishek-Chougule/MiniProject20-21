@@ -1,5 +1,8 @@
+import 'dart:html';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:EmpAttendy/firebase_auth/signup.dart';
 import 'package:splashscreen/splashscreen.dart';
@@ -17,9 +20,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'EmpAttendy',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      // theme: ThemeData(
+      //   brightness: ,
+      //   //Brightness.dark,
+      //   primarySwatch: Colors.blue,
+      // ),
       home: IntroScreen(),
     );
   }

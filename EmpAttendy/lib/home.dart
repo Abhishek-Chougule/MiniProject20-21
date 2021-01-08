@@ -178,7 +178,7 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                   MaterialPageRoute(
                       builder: (context) => Settings(uid: widget.uid)),
                 );
-              },
+              },  
             ),
             title: Text('Settings'),
             onTap: () {

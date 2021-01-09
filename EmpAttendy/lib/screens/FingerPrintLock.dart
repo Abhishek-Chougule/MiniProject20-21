@@ -89,9 +89,11 @@ class _AuthAppState extends State<AuthApp> {
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     _checkBiometric();
     _getAvailableBiometrics();
+    super.initState();
   }
 
   @override

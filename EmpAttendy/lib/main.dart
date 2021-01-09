@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'EmpAttendy',
+<<<<<<< HEAD
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       // theme: ThemeData(
@@ -27,6 +28,15 @@ class MyApp extends StatelessWidget {
       //   //Brightness.dark,
       //   primarySwatch: Colors.blue,
       // ),
+=======
+      theme: ThemeData(
+        brightness: Brightness.light,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      themeMode: ThemeMode.system,
+>>>>>>> 5e15fc7d2fc1d2d37f3cb69f1bc6bf06e2df8931
       home: IntroScreen(),
     );
   }

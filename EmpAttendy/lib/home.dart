@@ -6,6 +6,7 @@ import 'package:EmpAttendy/screens/wificonnectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:EmpAttendy/screens/FingerPrintLock.dart';
 
 class Home extends StatefulWidget {
   Home({this.uid});
@@ -177,8 +178,8 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => Settings(uid: widget.uid)),
-                );  
-              },  
+                );
+              },
             ),
             title: Text('Settings'),
             onTap: () {
@@ -205,6 +206,26 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => About(uid: widget.uid)),
+              );
+            },
+          ),
+          ListTile(
+            leading: new IconButton(
+              icon: new Icon(Icons.add_box_outlined),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => About(uid: widget.uid)),
+                );
+              },
+            ),
+            title: Text('Finger Lock'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AuthApp(uid: widget.uid)),
               );
             },
           ),

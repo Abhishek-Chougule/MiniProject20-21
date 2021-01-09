@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,15 +18,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'EmpAttendy',
-// <<<<<<< HEAD
-//       theme: ThemeData.light(),
-//       darkTheme: ThemeData.dark(),
-//       // theme: ThemeData(
-//       //   brightness: ,
-//       //   //Brightness.dark,
-//       //   primarySwatch: Colors.blue,
-//       // ),
-// =======
       theme: ThemeData(
         brightness: Brightness.light,
       ),
@@ -36,7 +25,6 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       themeMode: ThemeMode.system,
-//>>>>>>> 5e15fc7d2fc1d2d37f3cb69f1bc6bf06e2df8931
       home: IntroScreen(),
     );
   }

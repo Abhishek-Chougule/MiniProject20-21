@@ -211,12 +211,12 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
           ),
           ListTile(
             leading: new IconButton(
-              icon: new Icon(Icons.add_box_outlined),
+              icon: new Icon(Icons.fingerprint),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => About(uid: widget.uid)),
+                      builder: (context) => AuthApp(uid: widget.uid)),
                 );
               },
             ),

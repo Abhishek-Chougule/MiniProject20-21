@@ -73,9 +73,9 @@ class _AuthAppState extends State<AuthApp> {
     bool authenticated = false;
     try {
       authenticated = await auth.authenticateWithBiometrics(
-          localizedReason: "Scan your finger print to authenticate",
+          localizedReason: "Scan your finger print for Attendance",
           useErrorDialogs: true,
-          stickyAuth: false);
+          stickyAuth: true);
     } on PlatformException catch (e) {
       print(e);
     }
@@ -99,6 +99,7 @@ class _AuthAppState extends State<AuthApp> {
     return SafeArea(
       child: Scaffold(
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Center(
               child: RaisedButton(

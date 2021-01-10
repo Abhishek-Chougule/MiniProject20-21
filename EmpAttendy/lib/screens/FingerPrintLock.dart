@@ -107,23 +107,34 @@ class _AuthAppState extends State<AuthApp> {
               child: FlatButton.icon(
                 icon: const Icon(Icons.fingerprint),
                 label: const Text("Authenticate"),
+                splashColor: Colors.blue,
                 onPressed: _authenticate,
               ),
             ),
             Text(""),
             Text(""),
-            Text("Can check biometric: $_canCheckBiometric"),
-            Text("Available biometric: $_availableBiometric"),
-            Text("Current State: $authorized"),
-            Text(""),
-            Text(""),
-            Text(""),
+            Text((() {
+              if ('$authorized' == 'Autherized success') {
+                return 'Authenticated Successfull !' +
+                    "\n\n" +
+                    'Now Click on Verify Button';
+              } else {
+                return 'Can check biometric: $_canCheckBiometric' +
+                    '\n\n' +
+                    'Available biometric: $_availableBiometric' +
+                    '\n\n' +
+                    'Current State: $authorized!';
+              }
+            })()),
             Text(""),
             Text(""),
             Center(
               child: FlatButton.icon(
                 icon: const Icon(Icons.verified),
                 label: const Text("Verify"),
+                splashColor: '$authorized' == 'Autherized success'
+                    ? Colors.green
+                    : Colors.red,
                 onPressed: () {
                   if ('$authorized' == 'Autherized success') {
                     Navigator.push(

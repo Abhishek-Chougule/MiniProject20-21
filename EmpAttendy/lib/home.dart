@@ -209,26 +209,6 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               );
             },
           ),
-          ListTile(
-            leading: new IconButton(
-              icon: new Icon(Icons.fingerprint),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => AuthApp(uid: widget.uid)),
-                );
-              },
-            ),
-            title: Text('Finger Lock'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => AuthApp(uid: widget.uid)),
-              );
-            },
-          ),
         ],
       ),
     );

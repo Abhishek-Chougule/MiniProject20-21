@@ -18,9 +18,6 @@ class MyApp extends StatelessWidget {
 }
 
 class AuthApp extends StatefulWidget {
-  AuthApp({this.uid});
-  final String uid;
-
   @override
   _AuthAppState createState() => _AuthAppState();
 }

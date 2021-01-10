@@ -215,8 +215,7 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => AuthApp(uid: widget.uid)),
+                  MaterialPageRoute(builder: (context) => AuthApp()),
                 );
               },
             ),
@@ -224,8 +223,7 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => AuthApp(uid: widget.uid)),
+                MaterialPageRoute(builder: (context) => AuthApp()),
               );
             },
           ),

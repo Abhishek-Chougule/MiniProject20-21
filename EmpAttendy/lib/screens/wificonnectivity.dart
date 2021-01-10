@@ -32,10 +32,16 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
   StreamSubscription<ConnectivityResult> _connectivitySubscription;
   String wifiname;
   String status = 'No Connected !';
+  String connectionStatus;
+
+  DateTime gettime = DateTime.now();
+  Timer timer;
+  int counter = 0;
 
   @override
   void initState() {
     super.initState();
+    timer = Timer.periodic(Duration(seconds: 1), (Timer t) => addValue());
     initConnectivity();
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
@@ -43,15 +49,25 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
     });
   }
 
+  void addValue() {
+    setState(() {
+      gettime = DateTime.now();
+      _connectionStatus = connectionStatus;
+      wifiname = 'Connection Status: $_connectionStatus';
+      if (wifiname == 'Connection Status: ConnectivityResult.wifi') {
+        status = 'Connected';
+      }
+    });
+  }
+
   @override
   void dispose() {
     _connectivitySubscription.cancel();
+    timer?.cancel();
     super.dispose();
   }
 
   Future<Null> initConnectivity() async {
-    String connectionStatus;
-
     try {
       connectionStatus = (await _connectivity.checkConnectivity()).toString();
     } on PlatformException catch (e) {
@@ -62,14 +78,6 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
     if (!mounted) {
       return;
     }
-
-    setState(() {
-      _connectionStatus = connectionStatus;
-      wifiname = 'Connection Status: $_connectionStatus';
-      if (wifiname == 'Connection Status: ConnectivityResult.wifi') {
-        status = 'Connected';
-      }
-    });
   }
 
   @override
@@ -83,6 +91,7 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(status),
+              Text('\n' + gettime.toString()),
             ],
           ),
         ),

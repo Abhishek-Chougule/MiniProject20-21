@@ -36,7 +36,6 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
 
   DateTime gettime = DateTime.now();
   Timer timer;
-  int counter = 0;
 
   @override
   void initState() {

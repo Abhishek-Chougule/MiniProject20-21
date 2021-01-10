@@ -36,10 +36,13 @@ class _MyNetworkState extends State<MyNetwork> {
   StreamSubscription<ConnectivityResult> _connectivitySubscription;
   String wifiname;
   String status = 'No Connected !';
+  Timer timer;
+  String connectionStatus;
 
   @override
   void initState() {
     super.initState();
+    timer = Timer.periodic(Duration(seconds: 1), (Timer t) => reFresh());
     initPlatformState();
     initConnectivity();
     _connectivitySubscription =
@@ -48,9 +51,25 @@ class _MyNetworkState extends State<MyNetwork> {
     });
   }
 
+  void reFresh() {
+    setState(() {
+      _connectivitySubscription = _connectivity.onConnectivityChanged
+          .listen((ConnectivityResult result) {
+        _connectionStatus = result.toString();
+      });
+      wifiname = 'Connection Status: $_connectionStatus';
+      if (wifiname == 'Connection Status: ConnectivityResult.wifi') {
+        status = 'Connected';
+      } else {
+        status = 'No Connected !';
+      }
+    });
+  }
+
   @override
   void dispose() {
     _connectivitySubscription.cancel();
+    timer?.cancel();
     super.dispose();
   }
 

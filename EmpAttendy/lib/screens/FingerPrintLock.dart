@@ -1,3 +1,4 @@
+import 'package:EmpAttendy/home.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:local_auth/local_auth.dart';
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
 }
 
 class AuthApp extends StatefulWidget {
+  AuthApp({this.uid});
+  final String uid;
+
   @override
   _AuthAppState createState() => _AuthAppState();
 }
@@ -27,6 +31,7 @@ class _AuthAppState extends State<AuthApp> {
   bool _canCheckBiometric;
   List<BiometricType> _availableBiometric;
   String authorized = "Not authorized";
+  bool authenticated = false;
 
   //checking bimetrics
   //this function will check the sensors and will tell us
@@ -99,14 +104,37 @@ class _AuthAppState extends State<AuthApp> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Center(
-              child: RaisedButton(
+              child: FlatButton.icon(
+                icon: const Icon(Icons.fingerprint),
+                label: const Text("Authenticate"),
                 onPressed: _authenticate,
-                child: Text("Get Biometric"),
               ),
             ),
+            Text(""),
+            Text(""),
             Text("Can check biometric: $_canCheckBiometric"),
             Text("Available biometric: $_availableBiometric"),
             Text("Current State: $authorized"),
+            Text(""),
+            Text(""),
+            Text(""),
+            Text(""),
+            Text(""),
+            Center(
+              child: FlatButton.icon(
+                icon: const Icon(Icons.verified),
+                label: const Text("Verify"),
+                onPressed: () {
+                  if ('$authorized' == 'Autherized success') {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Home(uid: widget.uid)),
+                    );
+                  }
+                },
+              ),
+            ),
           ],
         ),
       ),

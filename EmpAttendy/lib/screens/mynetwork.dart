@@ -35,7 +35,7 @@ class _MyNetworkState extends State<MyNetwork> {
   final Connectivity _connectivity = new Connectivity();
   StreamSubscription<ConnectivityResult> _connectivitySubscription;
   String wifiname;
-  String status = 'No Connected !';
+  String status = 'Not Connected !';
   Timer timer;
   String connectionStatus;
 
@@ -61,7 +61,7 @@ class _MyNetworkState extends State<MyNetwork> {
       if (wifiname == 'Connection Status: ConnectivityResult.wifi') {
         status = 'Connected';
       } else {
-        status = 'No Connected !';
+        status = 'Not Connected !';
       }
     });
   }

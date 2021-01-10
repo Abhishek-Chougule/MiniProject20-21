@@ -41,7 +41,7 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(Duration(seconds: 1), (Timer t) => addValue());
+    timer = Timer.periodic(Duration(seconds: 1), (Timer t) => reFresh());
     initConnectivity();
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
@@ -49,13 +49,18 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
     });
   }
 
-  void addValue() {
+  void reFresh() {
     setState(() {
       gettime = DateTime.now();
-      _connectionStatus = connectionStatus;
+      _connectivitySubscription = _connectivity.onConnectivityChanged
+          .listen((ConnectivityResult result) {
+        _connectionStatus = result.toString();
+      });
       wifiname = 'Connection Status: $_connectionStatus';
       if (wifiname == 'Connection Status: ConnectivityResult.wifi') {
         status = 'Connected';
+      } else {
+        status = 'No Connected !';
       }
     });
   }

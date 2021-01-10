@@ -4,6 +4,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
@@ -34,7 +35,8 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
   String status = 'No Connected !';
   String connectionStatus;
 
-  DateTime gettime = DateTime.now();
+  DateTime now = DateTime.now();
+  String formattedDate = '0';
   Timer timer;
 
   @override
@@ -50,7 +52,8 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
 
   void reFresh() {
     setState(() {
-      gettime = DateTime.now();
+      now = DateTime.now();
+      formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
       _connectivitySubscription = _connectivity.onConnectivityChanged
           .listen((ConnectivityResult result) {
         _connectionStatus = result.toString();
@@ -95,7 +98,7 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(status),
-              Text('\n' + gettime.toString()),
+              Text('\n' + formattedDate),
             ],
           ),
         ),

@@ -107,7 +107,7 @@ class _AuthAppState extends State<AuthApp> {
                           : Icon(Icons.fingerprint),
                       label: '$authorized' == 'Autherized success'
                           ? Text("")
-                          : Text("Authenticate"),
+                          : Text("Scan Fingerprint"),
                       splashColor: Colors.blue,
                       onPressed: '$authorized' == 'Autherized success'
                           ? null
@@ -120,9 +120,7 @@ class _AuthAppState extends State<AuthApp> {
             '$_availableBiometric' == '[BiometricType.fingerprint]'
                 ? Text((() {
                     if ('$authorized' == 'Autherized success') {
-                      return 'Authenticated Successfull !' +
-                          "\n\n" +
-                          'Now Click on Verify Button';
+                      return 'Authentication Successfull !' + "\n";
                     } else {
                       return 'Can check biometric: $_canCheckBiometric' +
                           '\n\n' +
@@ -144,7 +142,8 @@ class _AuthAppState extends State<AuthApp> {
                   })()),
             Text(""),
             Text(""),
-            '$_availableBiometric' == '[BiometricType.fingerprint]'
+            '$_availableBiometric' == '[BiometricType.fingerprint]' &&
+                    '$authorized' == 'Autherized success'
                 ? Center(
                     child: FlatButton.icon(
                       icon: const Icon(Icons.verified),

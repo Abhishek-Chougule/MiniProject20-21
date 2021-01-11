@@ -91,6 +91,7 @@ class _AuthAppState extends State<AuthApp> {
 
   @override
   void initState() {
+    _authenticate();
     super.initState();
     _checkBiometric();
     _getAvailableBiometrics();
@@ -105,10 +106,16 @@ class _AuthAppState extends State<AuthApp> {
           children: <Widget>[
             Center(
               child: FlatButton.icon(
-                icon: const Icon(Icons.fingerprint),
-                label: const Text("Authenticate"),
+                icon: '$authorized' == 'Autherized success'
+                    ? Icon(Icons.assignment_ind_outlined)
+                    : Icon(Icons.fingerprint),
+                label: '$authorized' == 'Autherized success'
+                    ? Text("")
+                    : Text("Authenticate"),
                 splashColor: Colors.blue,
-                onPressed: _authenticate,
+                onPressed: '$authorized' == 'Autherized success'
+                    ? null
+                    : _authenticate,
               ),
             ),
             Text(""),

@@ -33,10 +33,8 @@ class _AuthAppState extends State<AuthApp> {
   List<BiometricType> _availableBiometric;
   String authorized = "Not authorized";
   bool authenticated = false;
+  String pin = '1234';
 
-  //checking bimetrics
-  //this function will check the sensors and will tell us
-  // if we can use them or not
   Future<void> _checkBiometric() async {
     bool canCheckBiometric;
     try {
@@ -68,10 +66,6 @@ class _AuthAppState extends State<AuthApp> {
     });
   }
 
-  //this function will open an authentication dialog
-  // and it will check if we are authenticated or not
-  // so we will add the major action here like moving to another activity
-  // or just display a text that will tell us that we are authenticated
   Future<void> _authenticate() async {
     bool authenticated = false;
     try {
@@ -154,7 +148,7 @@ class _AuthAppState extends State<AuthApp> {
                 ? Center(
                     child: FlatButton.icon(
                       icon: const Icon(Icons.verified),
-                      label: const Text("Verify"),
+                      label: const Text("Verify Fingerprint"),
                       splashColor: '$authorized' == 'Autherized success'
                           ? Colors.green
                           : Colors.red,
@@ -170,6 +164,14 @@ class _AuthAppState extends State<AuthApp> {
                     ),
                   )
                 : Center(),
+            Text(''),
+            Text(''),
+            Text(''),
+            Text(''),
+            Text(''),
+            Text(''),
+            Text(''),
+            Text(''),
             Center(
               child: FlatButton.icon(
                 icon: const Icon(Icons.lock),
@@ -177,18 +179,26 @@ class _AuthAppState extends State<AuthApp> {
                 splashColor: '$authorized' == 'Autherized success'
                     ? Colors.green
                     : Colors.red,
-                onPressed: () => showLockScreen(
-                  context: context,
-                  correctString: '1234',
-                  canCancel: false,
-                  onUnlocked: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Home(uid: widget.uid)),
-                    );
-                  },
-                ),
+                onPressed: () => '$pin' == '1234'
+                    ? showConfirmPasscode(
+                        context: context,
+                        onCompleted: (context, verifyCode) {
+                          pin = verifyCode;
+                          Navigator.of(context).maybePop();
+                        },
+                      )
+                    : showLockScreen(
+                        context: context,
+                        correctString: pin,
+                        canCancel: false,
+                        onUnlocked: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Home(uid: widget.uid)),
+                          );
+                        },
+                      ),
               ),
             ),
           ],

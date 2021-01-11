@@ -51,13 +51,12 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
       _connectivitySubscription = _connectivity.onConnectivityChanged
           .listen((ConnectivityResult result) {
         setState(() => _connectionStatus = result.toString());
-        var start;
+        var start, end;
         '$status' == 'Connected'
             ? start = new DateTime.now()
-            : start = new DateTime(2000, DateTime.september, 16);
-        var end;
-        '$status' == 'Connected'
-            ? end = new DateTime(2021, DateTime.january, 31)
+            : end = new DateTime.now();
+        '$status' != 'Connected'
+            ? start = new DateTime(2021, DateTime.january, 31)
             : end = DateTime(2000, DateTime.september, 16);
         Duration difference = end.difference(start);
         print(difference.inDays);

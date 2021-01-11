@@ -45,6 +45,7 @@ dependencies:
   splashscreen: ^1.3.5
   local_auth: ^0.6.2+3
   intl: ^0.16.1
+  flutter_screen_lock: ^1.2.6
   
   
 

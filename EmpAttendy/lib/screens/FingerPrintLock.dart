@@ -1,5 +1,6 @@
 import 'package:EmpAttendy/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screen_lock/lock_screen.dart';
 import 'dart:async';
 import 'package:local_auth/local_auth.dart';
 import 'package:flutter/services.dart';
@@ -104,53 +105,90 @@ class _AuthAppState extends State<AuthApp> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            '$_availableBiometric' == '[BiometricType.fingerprint]'
+                ? Center(
+                    child: FlatButton.icon(
+                      icon: '$authorized' == 'Autherized success'
+                          ? Icon(Icons.assignment_ind_outlined)
+                          : Icon(Icons.fingerprint),
+                      label: '$authorized' == 'Autherized success'
+                          ? Text("")
+                          : Text("Authenticate"),
+                      splashColor: Colors.blue,
+                      onPressed: '$authorized' == 'Autherized success'
+                          ? null
+                          : _authenticate,
+                    ),
+                  )
+                : Center(),
+            Text(""),
+            Text(""),
+            '$_availableBiometric' == '[BiometricType.fingerprint]'
+                ? Text((() {
+                    if ('$authorized' == 'Autherized success') {
+                      return 'Authenticated Successfull !' +
+                          "\n\n" +
+                          'Now Click on Verify Button';
+                    } else {
+                      return 'Can check biometric: $_canCheckBiometric' +
+                          '\n\n' +
+                          'Available biometric: $_availableBiometric' +
+                          '\n\n' +
+                          'Current State: $authorized!';
+                    }
+                  })())
+                : Text((() {
+                    if ('$authorized' == 'Autherized success') {
+                      return '' + "\n\n" + '';
+                    } else {
+                      return '' +
+                          '\n\n' +
+                          'Fingerprint Sensor not Available try Pin Lock' +
+                          '\n\n' +
+                          '';
+                    }
+                  })()),
+            Text(""),
+            Text(""),
+            '$_availableBiometric' == '[BiometricType.fingerprint]'
+                ? Center(
+                    child: FlatButton.icon(
+                      icon: const Icon(Icons.verified),
+                      label: const Text("Verify"),
+                      splashColor: '$authorized' == 'Autherized success'
+                          ? Colors.green
+                          : Colors.red,
+                      onPressed: () {
+                        if ('$authorized' == 'Autherized success') {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Home(uid: widget.uid)),
+                          );
+                        }
+                      },
+                    ),
+                  )
+                : Center(),
             Center(
               child: FlatButton.icon(
-                icon: '$authorized' == 'Autherized success'
-                    ? Icon(Icons.assignment_ind_outlined)
-                    : Icon(Icons.fingerprint),
-                label: '$authorized' == 'Autherized success'
-                    ? Text("")
-                    : Text("Authenticate"),
-                splashColor: Colors.blue,
-                onPressed: '$authorized' == 'Autherized success'
-                    ? null
-                    : _authenticate,
-              ),
-            ),
-            Text(""),
-            Text(""),
-            Text((() {
-              if ('$authorized' == 'Autherized success') {
-                return 'Authenticated Successfull !' +
-                    "\n\n" +
-                    'Now Click on Verify Button';
-              } else {
-                return 'Can check biometric: $_canCheckBiometric' +
-                    '\n\n' +
-                    'Available biometric: $_availableBiometric' +
-                    '\n\n' +
-                    'Current State: $authorized!';
-              }
-            })()),
-            Text(""),
-            Text(""),
-            Center(
-              child: FlatButton.icon(
-                icon: const Icon(Icons.verified),
-                label: const Text("Verify"),
+                icon: const Icon(Icons.lock),
+                label: const Text("Pin Lock"),
                 splashColor: '$authorized' == 'Autherized success'
                     ? Colors.green
                     : Colors.red,
-                onPressed: () {
-                  if ('$authorized' == 'Autherized success') {
+                onPressed: () => showLockScreen(
+                  context: context,
+                  correctString: '1234',
+                  canCancel: false,
+                  onUnlocked: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => Home(uid: widget.uid)),
                     );
-                  }
-                },
+                  },
+                ),
               ),
             ),
           ],

@@ -97,6 +97,9 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
 
   @override
   Widget build(BuildContext context) {
+    var start = new DateTime(2021, DateTime.january, 1);
+    var end = new DateTime(2021, DateTime.december, 31);
+    Duration difference = end.difference(start);
     return Scaffold(
         appBar: AppBar(
           title: Text("Wifi Connectivity"),
@@ -107,6 +110,10 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
             children: <Widget>[
               Text(status),
               Text('\n' + formattedDate),
+              Text((difference.inDays).toString()),
+              Text((difference.inHours).toString()),
+              Text((difference.inMinutes).toString()),
+              Text((difference.inMilliseconds).toString()),
             ],
           ),
         ),

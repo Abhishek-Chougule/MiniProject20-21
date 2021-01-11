@@ -44,22 +44,24 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
     super.initState();
     timer = Timer.periodic(Duration(seconds: 1), (Timer t) => reFresh());
     initConnectivity();
-    _connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
-      setState(() => _connectionStatus = result.toString());
-// Difference between time calculation start from here..
-      var start = new DateTime(2021, DateTime.january, 1);
-      var end = new DateTime(2021, DateTime.december, 31);
-      Duration difference = end.difference(start);
-      print(difference.inDays);
-      print(difference.inHours);
-      print(difference.inMinutes);
-      print(difference.inMilliseconds);
-    });
   }
 
   void reFresh() {
     setState(() {
+      _connectivitySubscription = _connectivity.onConnectivityChanged
+          .listen((ConnectivityResult result) {
+        setState(() => _connectionStatus = result.toString());
+        var start;
+        '$status' == 'Connected'
+            ? start = new DateTime.now()
+            : start = new DateTime(2000, DateTime.september, 16);
+        var end;
+        '$status' == 'Connected'
+            ? end = new DateTime(2021, DateTime.january, 31)
+            : end = DateTime(2000, DateTime.september, 16);
+        Duration difference = end.difference(start);
+        print(difference.inDays);
+      });
       now = DateTime.now();
       formattedDate = DateFormat('kk:mm:ss \n EEE d MMM').format(now);
       _connectivitySubscription = _connectivity.onConnectivityChanged
@@ -97,8 +99,14 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
 
   @override
   Widget build(BuildContext context) {
-    var start = new DateTime(2021, DateTime.january, 1);
-    var end = new DateTime(2021, DateTime.december, 31);
+    var start;
+    '$status' == 'Connected'
+        ? start = new DateTime.now()
+        : start = new DateTime(2000, DateTime.september, 16);
+    var end;
+    '$status' == 'Connected'
+        ? end = new DateTime(2021, DateTime.january, 31)
+        : end = DateTime(2000, DateTime.september, 16);
     Duration difference = end.difference(start);
     return Scaffold(
         appBar: AppBar(

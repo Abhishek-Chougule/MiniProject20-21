@@ -47,7 +47,7 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
       setState(() => _connectionStatus = result.toString());
-
+// Difference between time calculation start from here..
       var start = new DateTime(2021, DateTime.january, 1);
       var end = new DateTime(2021, DateTime.december, 31);
       Duration difference = end.difference(start);

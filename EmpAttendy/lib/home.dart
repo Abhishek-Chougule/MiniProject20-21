@@ -1,11 +1,13 @@
-import 'package:EmpAttendy/screens/mynetwork.dart';
+import 'dart:async';
+
 import 'package:EmpAttendy/firebase_auth/signup.dart';
-import 'package:EmpAttendy/screens/settings.dart';
-import 'package:EmpAttendy/screens/about.dart';
-import 'package:EmpAttendy/screens/wificonnectivity.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:EmpAttendy/screens/drawer.dart';
+import 'package:flutter/services.dart';
+import 'package:get_mac/get_mac.dart';
+import 'package:imei_plugin/imei_plugin.dart';
 
 class Home extends StatefulWidget {
   Home({this.uid});
@@ -17,6 +19,92 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final String title = "Home";
+  String _macAddress = "Unknown";
+  String _imeiNumber = "Unknown";
+  String _connectionStatus = 'Unknown';
+  final Connectivity _connectivity = new Connectivity();
+  StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  String wifiname;
+  String status = 'Not Connected !';
+  Timer timer;
+  String connectionStatus;
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(Duration(seconds: 1), (Timer t) => reFresh());
+    initPlatformState();
+    initConnectivity();
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+      setState(() => _connectionStatus = result.toString());
+    });
+  }
+
+  void reFresh() {
+    setState(() {
+      _connectivitySubscription = _connectivity.onConnectivityChanged
+          .listen((ConnectivityResult result) {
+        _connectionStatus = result.toString();
+      });
+      wifiname = 'Connection Status: $_connectionStatus';
+      if (wifiname == 'Connection Status: ConnectivityResult.wifi') {
+        status = 'Connected';
+      } else {
+        status = 'Not Connected !';
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _connectivitySubscription.cancel();
+    timer?.cancel();
+    super.dispose();
+  }
+
+  Future<Null> initConnectivity() async {
+    String connectionStatus;
+
+    try {
+      connectionStatus = (await _connectivity.checkConnectivity()).toString();
+    } on PlatformException catch (e) {
+      print(e.toString());
+      connectionStatus = 'Failed to get connectivity.';
+    }
+
+    if (!mounted) {
+      return;
+    }
+
+    setState(() {
+      _connectionStatus = connectionStatus;
+      wifiname = 'Connection Status: $_connectionStatus';
+      if (wifiname == 'Connection Status: ConnectivityResult.wifi') {
+        status = 'Connected';
+      }
+    });
+  }
+
+  Future<void> initPlatformState() async {
+    String macAddress;
+    String imeiNumber;
+
+    try {
+      macAddress = await GetMac.macAddress;
+      imeiNumber =
+          await ImeiPlugin.getImei(shouldShowRequestPermissionRationale: false);
+    } on PlatformException {
+      macAddress = "Faild to get Device MAC Adress";
+    }
+    if (!mounted) return;
+
+    setState(() {
+      _macAddress = macAddress;
+      _imeiNumber = imeiNumber;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,176 +128,27 @@ class _HomeState extends State<Home> {
             )
           ],
         ),
-        body: Center(),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text((() {
+                if (status == 'Connected') {
+                  return 'MAC Address :  $_macAddress' +
+                      "\n\n" +
+                      'IMEI Number :   $_imeiNumber';
+                } else {
+                  return 'No Active Users !' +
+                      '\n\n' +
+                      'MAC Address :  $_macAddress' +
+                      "\n\n" +
+                      'IMEI Number :   $_imeiNumber';
+                }
+              })()),
+            ],
+          ),
+        ),
         drawer: NavigateDrawer(uid: this.widget.uid));
-  }
-}
-
-class NavigateDrawer extends StatefulWidget {
-  final String uid;
-  NavigateDrawer({Key key, this.uid}) : super(key: key);
-  @override
-  _NavigateDrawerState createState() => _NavigateDrawerState();
-}
-
-class _NavigateDrawerState extends State<NavigateDrawer> {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          UserAccountsDrawerHeader(
-            currentAccountPicture: FutureBuilder(
-                future: FirebaseDatabase.instance
-                    .reference()
-                    .child("Users")
-                    .child(widget.uid)
-                    .once(),
-                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                  if (snapshot.hasData) {
-                    return CircleAvatar(
-                      backgroundColor: Colors.black,
-                      child: Text(snapshot.data.value['name'][0]),
-                    );
-                  } else {
-                    return CircularProgressIndicator();
-                  }
-                }),
-            accountEmail: FutureBuilder(
-                future: FirebaseDatabase.instance
-                    .reference()
-                    .child("Users")
-                    .child(widget.uid)
-                    .once(),
-                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(
-                        'Email            :   ' + snapshot.data.value['email']);
-                  } else {
-                    return CircularProgressIndicator();
-                  }
-                }),
-            accountName: FutureBuilder(
-                future: FirebaseDatabase.instance
-                    .reference()
-                    .child("Users")
-                    .child(widget.uid)
-                    .once(),
-                builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(
-                        'Username    :   ' + snapshot.data.value['name']);
-                  } else {
-                    return CircularProgressIndicator();
-                  }
-                }),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-          ),
-          ListTile(
-            leading: new IconButton(
-              icon: new Icon(Icons.home_outlined),
-              onPressed: () {
-                print(widget.uid);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Home(uid: widget.uid)),
-                );
-              },
-            ),
-            title: Text('Home'),
-            onTap: () {
-              print(widget.uid);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Home(uid: widget.uid)),
-              );
-            },
-          ),
-          ListTile(
-            leading: new IconButton(
-              icon: new Icon(Icons.network_check),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => WifiConnectivity(uid: widget.uid)),
-                );
-              },
-            ),
-            title: Text('Connectivity'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => WifiConnectivity(uid: widget.uid)),
-              );
-            },
-          ),
-          ListTile(
-            leading: new IconButton(
-              icon: new Icon(Icons.network_cell),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MyNetwork(uid: widget.uid)),
-                );
-              },
-            ),
-            title: Text('Network'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => MyNetwork(uid: widget.uid)),
-              );
-            },
-          ),
-          ListTile(
-            leading: new IconButton(
-              icon: new Icon(Icons.settings_outlined),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Settings(uid: widget.uid)),
-                );
-              },
-            ),
-            title: Text('Settings'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Settings(uid: widget.uid)),
-              );
-            },
-          ),
-          ListTile(
-            leading: new IconButton(
-              icon: new Icon(Icons.add_box_outlined),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => About(uid: widget.uid)),
-                );
-              },
-            ),
-            title: Text('About'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => About(uid: widget.uid)),
-              );
-            },
-          ),
-        ],
-      ),
-    );
   }
 }

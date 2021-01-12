@@ -45,6 +45,7 @@ dependencies:
   intl: ^0.16.1
   flutter_screen_lock: ^1.2.6
   wifi: ^0.1.5
+  wifi_iot: ^0.2.0
   
   
 

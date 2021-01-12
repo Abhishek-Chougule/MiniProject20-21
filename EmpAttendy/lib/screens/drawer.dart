@@ -1,9 +1,9 @@
 import 'package:EmpAttendy/screens/settings.dart';
 import 'package:EmpAttendy/screens/about.dart';
 import 'package:EmpAttendy/screens/wificonnectivity.dart';
+import 'package:EmpAttendy/screens/wifi_con.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-
 import '../home.dart';
 
 class NavigateDrawer extends StatefulWidget {
@@ -107,6 +107,24 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => WifiConnectivity(uid: widget.uid)),
+              );
+            },
+          ),
+          ListTile(
+            leading: new IconButton(
+              icon: new Icon(Icons.wifi),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WifiCon()),
+                );
+              },
+            ),
+            title: Text('Connect to Wifi'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => WifiCon()),
               );
             },
           ),

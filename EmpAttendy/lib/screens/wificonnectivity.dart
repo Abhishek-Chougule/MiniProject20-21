@@ -110,6 +110,7 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Wifi Connectivity"),
+          centerTitle: true,
         ),
         body: Center(
           child: Column(

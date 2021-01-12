@@ -28,6 +28,7 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Settings"),
+          centerTitle: true,
         ),
         body: Center(),
         drawer: NavigateDrawer(uid: this.widget.uid));

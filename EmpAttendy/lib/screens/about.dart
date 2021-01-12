@@ -28,6 +28,7 @@ class _AboutState extends State<About> {
     return Scaffold(
         appBar: AppBar(
           title: Text("About"),
+          centerTitle: true,
         ),
         body: Center(),
         drawer: NavigateDrawer(uid: this.widget.uid));

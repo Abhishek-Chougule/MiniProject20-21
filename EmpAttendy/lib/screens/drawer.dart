@@ -1,4 +1,3 @@
-import 'package:EmpAttendy/screens/mynetwork.dart';
 import 'package:EmpAttendy/screens/settings.dart';
 import 'package:EmpAttendy/screens/about.dart';
 import 'package:EmpAttendy/screens/wificonnectivity.dart';
@@ -108,26 +107,6 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => WifiConnectivity(uid: widget.uid)),
-              );
-            },
-          ),
-          ListTile(
-            leading: new IconButton(
-              icon: new Icon(Icons.network_cell),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MyNetwork(uid: widget.uid)),
-                );
-              },
-            ),
-            title: Text('Network'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => MyNetwork(uid: widget.uid)),
               );
             },
           ),

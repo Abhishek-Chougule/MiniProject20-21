@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'package:EmpAttendy/screens/wificonnectivity.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:EmpAttendy/screens/drawer.dart';
 import 'package:wifi/wifi.dart';
+
+import 'firebase_auth/signup.dart';
 
 class Home extends StatefulWidget {
   Home({this.uid});
@@ -47,6 +50,23 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Home'),
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.exit_to_app,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              FirebaseAuth auth = FirebaseAuth.instance;
+              auth.signOut().then((res) {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignUp()),
+                    (Route<dynamic> route) => false);
+              });
+            },
+          )
+        ],
       ),
       body: Center(
         child: Column(

@@ -1,7 +1,7 @@
+import 'package:EmpAttendy/firebase_auth/signup.dart';
 import 'package:EmpAttendy/screens/settings.dart';
-import 'package:EmpAttendy/screens/about.dart';
 import 'package:EmpAttendy/screens/wificonnectivity.dart';
-import 'package:EmpAttendy/screens/wifi_con.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '../home.dart';
@@ -112,24 +112,6 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
           ),
           ListTile(
             leading: new IconButton(
-              icon: new Icon(Icons.wifi),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => WifiCon()),
-                );
-              },
-            ),
-            title: Text('Connect to Wifi'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => WifiCon()),
-              );
-            },
-          ),
-          ListTile(
-            leading: new IconButton(
               icon: new Icon(Icons.settings_outlined),
               onPressed: () {
                 Navigator.push(
@@ -150,21 +132,26 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
           ),
           ListTile(
             leading: new IconButton(
-              icon: new Icon(Icons.add_box_outlined),
+              icon: new Icon(Icons.logout),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => About(uid: widget.uid)),
-                );
+                FirebaseAuth auth = FirebaseAuth.instance;
+                auth.signOut().then((res) {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUp()),
+                      (Route<dynamic> route) => false);
+                });
               },
             ),
-            title: Text('About'),
+            title: Text('Logout'),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => About(uid: widget.uid)),
-              );
+              FirebaseAuth auth = FirebaseAuth.instance;
+              auth.signOut().then((res) {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignUp()),
+                    (Route<dynamic> route) => false);
+              });
             },
           ),
         ],

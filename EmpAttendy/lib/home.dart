@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:EmpAttendy/screens/drawer.dart';
 import 'package:wifi/wifi.dart';
-
 import 'firebase_auth/signup.dart';
 
 class Home extends StatefulWidget {
@@ -18,8 +17,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int level = 0;
   String _ip = 'Checking Wifi ...';
-  List<WifiResult> ssidList = [];
-  String ssid = '', password = '';
   Timer timer;
 
   Future<void> _markattendance() async {
@@ -35,13 +32,18 @@ class _HomeState extends State<Home> {
     timer = Timer.periodic(Duration(seconds: 1), (Timer t) => reFresh());
     _getIP();
     super.initState();
-    loadData();
   }
 
   void reFresh() {
     setState(() {
       _getIP();
     });
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -97,14 +99,6 @@ class _HomeState extends State<Home> {
       ),
       drawer: NavigateDrawer(uid: this.widget.uid),
     );
-  }
-
-  void loadData() async {
-    Wifi.list('').then((list) {
-      setState(() {
-        ssidList = list;
-      });
-    });
   }
 
   Future<Null> _getIP() async {

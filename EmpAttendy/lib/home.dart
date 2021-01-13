@@ -42,11 +42,10 @@ class _HomeState extends State<Home> {
       dbRef.once().then((DataSnapshot snapshot) {
         Map<dynamic, dynamic> values = snapshot.value;
         values.forEach((key, values) {
-          print(values["uid"]);
           cuid = values["uid"];
         });
       });
-      // _getIP();
+      _getIP();
     });
   }
 

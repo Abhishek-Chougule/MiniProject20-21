@@ -1,10 +1,11 @@
 import 'dart:async';
-import 'package:EmpAttendy/screens/wificonnectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:EmpAttendy/screens/drawer.dart';
 import 'package:wifi/wifi.dart';
 import 'firebase_auth/signup.dart';
+import 'package:EmpAttendy/firebase_auth/signup.dart';
 
 class Home extends StatefulWidget {
   Home({this.uid});
@@ -18,13 +19,14 @@ class _HomeState extends State<Home> {
   int level = 0;
   String _ip = 'Checking Wifi ...';
   Timer timer;
+  bool isLoading = false;
+  final _formKey = GlobalKey<FormState>();
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  DatabaseReference dbRef =
+      FirebaseDatabase.instance.reference().child("Attendance");
 
   Future<void> _markattendance() async {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => WifiConnectivity(uid: widget.uid)),
-    );
+    registerToFb();
   }
 
   @override
@@ -92,13 +94,24 @@ class _HomeState extends State<Home> {
               icon: Icon(Icons.assignment_ind_outlined),
               label: Text("Mark Attendance"),
               splashColor: Colors.blue,
-              onPressed: '$_ip' == '192.168.43.90' ? _markattendance : null,
+              onPressed:
+                  '$_ip' == '192.168.43.90' && _formKey.currentState.validate()
+                      ? _markattendance
+                      : registerToFb,
             ),
           ],
         ),
       ),
       drawer: NavigateDrawer(uid: this.widget.uid),
     );
+  }
+
+  void registerToFb() {
+    dbRef.push().set({
+      "uid": widget.uid,
+      "status": 'present',
+      "datetime": (DateTime.now()).toString()
+    });
   }
 
   Future<Null> _getIP() async {

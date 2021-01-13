@@ -22,6 +22,7 @@ class _HomeState extends State<Home> {
   bool isLoading = false;
   final _formKey = GlobalKey<FormState>();
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  String cuid = 'null';
   DatabaseReference dbRef =
       FirebaseDatabase.instance.reference().child("Attendance");
 
@@ -38,7 +39,14 @@ class _HomeState extends State<Home> {
 
   void reFresh() {
     setState(() {
-      _getIP();
+      dbRef.once().then((DataSnapshot snapshot) {
+        Map<dynamic, dynamic> values = snapshot.value;
+        values.forEach((key, values) {
+          print(values["uid"]);
+          cuid = values["uid"];
+        });
+      });
+      // _getIP();
     });
   }
 
@@ -94,10 +102,11 @@ class _HomeState extends State<Home> {
               icon: Icon(Icons.assignment_ind_outlined),
               label: Text("Mark Attendance"),
               splashColor: Colors.blue,
-              onPressed:
-                  '$_ip' == '192.168.43.90' && _formKey.currentState.validate()
-                      ? _markattendance
-                      : registerToFb,
+              onPressed: '$_ip' == '192.168.43.90' &&
+                      _formKey.currentState.validate() &&
+                      '$cuid' != widget.uid
+                  ? _markattendance
+                  : null,
             ),
           ],
         ),
@@ -112,6 +121,7 @@ class _HomeState extends State<Home> {
       "status": 'present',
       "datetime": (DateTime.now()).toString()
     });
+    //dbRef.orderByChild("uid").equalTo(widget.uid).once();
   }
 
   Future<Null> _getIP() async {

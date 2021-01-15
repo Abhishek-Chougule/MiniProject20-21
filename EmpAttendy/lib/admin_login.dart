@@ -1,13 +1,14 @@
-import 'package:EmpAttendy/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class EmailLogIn extends StatefulWidget {
+import 'firebase_auth/email_signup.dart';
+
+class AdminLogIn extends StatefulWidget {
   @override
-  _EmailLogInState createState() => _EmailLogInState();
+  _AdminLogInState createState() => _AdminLogInState();
 }
 
-class _EmailLogInState extends State<EmailLogIn> {
+class _AdminLogInState extends State<AdminLogIn> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -17,7 +18,10 @@ class _EmailLogInState extends State<EmailLogIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Login")),
+        appBar: AppBar(
+          title: Text("Admin Login"),
+          centerTitle: true,
+        ),
         body: Form(
             key: _formKey,
             child: SingleChildScrollView(
@@ -93,7 +97,7 @@ class _EmailLogInState extends State<EmailLogIn> {
       isLoading = false;
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Home(uid: result.user.uid)),
+        MaterialPageRoute(builder: (context) => EmailSignUp()),
       );
     }).catchError((err) {
       print(err.message);

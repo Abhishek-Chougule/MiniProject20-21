@@ -110,13 +110,14 @@ class _HomeState extends State<Home> {
       Map<dynamic, dynamic> values = snapshot.value;
       values.forEach((key, values) {
         cuid = values["uid"];
+        dbRef.child(values["uid"]).set({
+          "uid": widget.uid,
+          "status": 'present',
+          "datetime": (DateTime.now()).toString()
+        });
       });
     });
-    dbRef.push().set({
-      "uid": widget.uid,
-      "status": 'present',
-      "datetime": (DateTime.now()).toString()
-    });
+
     //dbRef.orderByChild("uid").equalTo(widget.uid).once();
   }
 

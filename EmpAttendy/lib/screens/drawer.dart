@@ -15,6 +15,9 @@ class NavigateDrawer extends StatefulWidget {
 
 class _NavigateDrawerState extends State<NavigateDrawer> {
   @override
+  String cuid = 'null';
+  DatabaseReference dbRef =
+      FirebaseDatabase.instance.reference().child("Attendance");
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
@@ -45,8 +48,17 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                     .once(),
                 builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
                   if (snapshot.hasData) {
-                    return Text(
-                        'Email            :   ' + snapshot.data.value['email']);
+                    dbRef.once().then((DataSnapshot snapshot) {
+                      Map<dynamic, dynamic> values = snapshot.value;
+                      values.forEach((key, values) {
+                        cuid = values["uid"];
+                      });
+                    });
+                    return Text('Email            :   ' +
+                        snapshot.data.value['email'] +
+                        '\n\n' +
+                        "User ID: " +
+                        cuid);
                   } else {
                     return CircularProgressIndicator();
                   }

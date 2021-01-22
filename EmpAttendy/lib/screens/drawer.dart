@@ -14,10 +14,10 @@ class NavigateDrawer extends StatefulWidget {
 }
 
 class _NavigateDrawerState extends State<NavigateDrawer> {
-  @override
   String cuid = 'null';
   DatabaseReference dbRef =
       FirebaseDatabase.instance.reference().child("Attendance");
+  @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(

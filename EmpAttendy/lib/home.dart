@@ -77,6 +77,10 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Image(
+                width: 100,
+                height: 100,
+                image: AssetImage('assets/profile.png')),
             Text((() {
               if ('$_ip' == '192.168.43.90') {
                 return 'Connected to Company Wifi';

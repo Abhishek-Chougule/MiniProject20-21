@@ -30,7 +30,15 @@ class _SettingsState extends State<Settings> {
           title: Text("Settings"),
           centerTitle: true,
         ),
-        body: Center(),
+        body: Center(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+              Image(
+                  width: 100,
+                  height: 100,
+                  image: AssetImage('assets/settings.png')),
+            ])),
         drawer: NavigateDrawer(uid: this.widget.uid));
   }
 }

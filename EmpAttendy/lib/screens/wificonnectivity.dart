@@ -116,6 +116,10 @@ class _WifiConnectivityState extends State<WifiConnectivity> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Image(
+                  width: 100,
+                  height: 100,
+                  image: AssetImage('assets/wifi.png')),
               Text(status),
               Text('\n' + formattedDate),
               Text((difference.inDays).toString()),

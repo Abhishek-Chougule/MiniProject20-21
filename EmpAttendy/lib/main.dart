@@ -42,7 +42,7 @@ class IntroScreen extends StatelessWidget {
           '\nWelcome To EmpAttendy',
           style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
         ),
-        image: Image.asset('assets/sslogo.png', fit: BoxFit.scaleDown),
+        image: Image.asset('assets/profile.png', fit: BoxFit.scaleDown),
         backgroundColor: Colors.white,
         styleTextUnderTheLoader: new TextStyle(),
         photoSize: 50.0,

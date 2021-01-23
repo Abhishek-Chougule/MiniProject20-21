@@ -1,5 +1,4 @@
 import 'package:EmpAttendy/firebase_auth/signup.dart';
-import 'package:EmpAttendy/screens/settings.dart';
 import 'package:EmpAttendy/screens/wificonnectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -119,26 +118,6 @@ class _NavigateDrawerState extends State<NavigateDrawer> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => WifiConnectivity(uid: widget.uid)),
-              );
-            },
-          ),
-          ListTile(
-            leading: new IconButton(
-              icon: new Icon(Icons.settings_outlined),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Settings(uid: widget.uid)),
-                );
-              },
-            ),
-            title: Text('Settings'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Settings(uid: widget.uid)),
               );
             },
           ),

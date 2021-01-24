@@ -24,9 +24,15 @@ class _HomeState extends State<Home> {
   String cuid = 'null';
   DatabaseReference dbRef =
       FirebaseDatabase.instance.reference().child("Attendance");
+  DatabaseReference dbRef1 =
+      FirebaseDatabase.instance.reference().child("StopAttendance");
 
   Future<void> _markattendance() async {
     registerToFb();
+  }
+
+  Future<void> _stopattendance() async {
+    registerToFb1();
   }
 
   @override
@@ -102,6 +108,14 @@ class _HomeState extends State<Home> {
                   ? _markattendance
                   : null,
             ),
+            FlatButton.icon(
+              icon: Icon(Icons.assignment_ind_outlined),
+              label: Text("Stop Attendance"),
+              splashColor: Colors.blue,
+              onPressed: '$_ip' == '192.168.43.90' && '$cuid' == widget.uid
+                  ? _stopattendance
+                  : null,
+            ),
           ],
         ),
       ),
@@ -119,6 +133,20 @@ class _HomeState extends State<Home> {
           "status": 'present',
           "datetime": (DateTime.now()).toString()
         });
+      });
+    });
+
+    //dbRef.orderByChild("uid").equalTo(widget.uid).once();
+  }
+
+  void registerToFb1() {
+    dbRef1.once().then((DataSnapshot snapshot) {
+      Map<dynamic, dynamic> values = snapshot.value;
+      values.forEach((key, values) {
+        cuid = 'null';
+        dbRef1
+            .child(values["uid"])
+            .set({"uid": widget.uid, "datetime": (DateTime.now()).toString()});
       });
     });
 
